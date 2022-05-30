@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import parser from "html-react-parser";
 import { StyledButton } from "./BoardWrite2";
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 const ViewWrapper = styled.div`
   clear: both;
@@ -10,6 +11,7 @@ const ViewWrapper = styled.div`
   width: 100%;
   background: white;
   color: #555;
+
   .title {
     font-size: 30px;
     margin: 16px 0px;
@@ -20,6 +22,10 @@ const ViewWrapper = styled.div`
   .comment {
     margin-bottom: 16px;
     display: flex;
+  }
+  .inputbox {
+    width: 50%;
+    margin-right: 11px;
   }
   .commentviewrapper {
     background-color: #fbfbfb;
@@ -42,7 +48,9 @@ const ViewWrapper = styled.div`
     width: 550px;
     justify-content: end;
   }
-
+  /* .comm-date {
+    width: 80px;
+  } */
   .first {
     display: flex;
   }
@@ -81,6 +89,7 @@ const ViewWrapper = styled.div`
     display: flex;
     /* justify-content: center; 
     align-items: center; */
+    align-items: center; //위아래정렬
   }
   .datebig {
     display: flex;
@@ -141,6 +150,12 @@ const ViewWrapper = styled.div`
     display: flex;
     justify-content: flex-end;
   }
+  .nextgroup {
+    /* padding: 16px; */
+    width: 100%;
+    margin: 15px 0;
+    padding-bottom: 40px;
+  }
 `;
 const Container = styled.div`
   max-width: 800px;
@@ -185,10 +200,12 @@ const BoardView = () => {
         <hr className="line" />
 
         <div className="button">
-          <StyledButton>목록</StyledButton>
+          <Link to="/list">
+            <StyledButton>목록</StyledButton>
+          </Link>
         </div>
         <div className="comment">
-          <StyledInput></StyledInput>
+          <StyledInput className="inputbox"></StyledInput>
           <StyledButton>댓글달기</StyledButton>
         </div>
         <div className="commentviewrapper">
@@ -202,8 +219,10 @@ const BoardView = () => {
             );
           })}
         </div>
-        <div className="before">이전글</div>
-        <div className="next">다음글</div>
+        <div className="nextgroup">
+          <div className="before">이전글</div>
+          <div className="next">다음글</div>
+        </div>
       </ViewWrapper>
     </Container>
   );

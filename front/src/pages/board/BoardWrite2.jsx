@@ -28,7 +28,7 @@ const Writerapper = styled.div`
   margin-top: 20px;
   .title {
     color: #333;
-    font-family: "HallymMjo-Regular";
+    font: 600 11px/13px "Open Sans", sans-serif;
     font-size: 15px;
     height: 20px;
     width: 220px;

@@ -11,7 +11,7 @@ import { Link } from "react-router-dom";
 
 const ListWrapper = styled.div`
   .table {
-    border-top: 1px solid #eee;
+    /* border-top: 1px solid #eee; */
     border-collapse: collapse;
     color: #555;
     width: 100%;
@@ -19,9 +19,10 @@ const ListWrapper = styled.div`
   }
   .bigcard {
     background: #fff;
+    font: 545 11px/13px "Open Sans", sans-serif;
     width: 100%;
     height: 100%;
-    font-size: 15px;
+    font-size: 13px;
     margin-top: 13px;
     padding: 12 4px;
     /* border-bottom: 1px solid #eee; */
@@ -34,14 +35,20 @@ const ListWrapper = styled.div`
   .p-datatable-thead {
     /* background-color: #fbeded; */
     /* background-color: #fbf2f2; */
-    background-color: #fff2f2;
+    /* background-color: #fff2f2; */
+    background-color: #fbe7e7;
+    border-bottom: 1px solid #e3e3e3;
+    border-top: 1px solid #e3e3e3;
   }
 
   .p-datatable-tbody {
-    margin-bottom: black;
+    /* margin-bottom: black; */
     /* border-top: 1px solid #e3e3e3; */
     /* background-color: red; */
     tr {
+      border-bottom: 1px solid #e3e3e3;
+    }
+    td {
       border-bottom: 1px solid #e3e3e3;
     }
   }
@@ -98,7 +105,7 @@ const ListWrapper = styled.div`
     height: 27px;
     /* background: url(/web/upload/romi/bg/top_bg.png) bottom center repeat-x; */
     padding: 10px 0;
-    font: 600 11px/13px "Open Sans", sans-serif;
+    font: 18px/13px "Open Sans", sans-serif;
     color: #333;
     text-align: center;
     letter-spacing: 3px;
