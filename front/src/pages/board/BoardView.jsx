@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import parser from "html-react-parser"
+import parser from "html-react-parser";
 import { StyledButton } from "./BoardWrite2";
 import styled from "styled-components";
 
@@ -21,13 +21,35 @@ const ViewWrapper = styled.div`
     margin-bottom: 16px;
     display: flex;
   }
+  .commentviewrapper {
+    background-color: #fbfbfb;
+    border-top: 1px solid #e9e9e9;
+    border-bottom: 1px solid #e9e9e9;
+    padding: 12px 3px;
+  }
+  .comment-view {
+    display: flex;
+    margin: 8px;
+  }
+  .comm-person {
+    width: 100px;
+  }
+  .comm-content {
+    flex: 1;
+  }
+  .comm-date {
+    display: flex;
+    width: 550px;
+    justify-content: end;
+  }
+
   .first {
     display: flex;
   }
   .subname {
-    display: flex; 
-    justify-content: center; 
-    align-items: center; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
     height: 47px;
     width: 140px;
     border-top: 1px solid #e3e3e3;
@@ -36,9 +58,9 @@ const ViewWrapper = styled.div`
     height: 47px;
     border-top: 1px solid #e3e3e3;
     flex: 1;
-    display: flex; 
-    justify-content: center; 
-    align-items: center; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
   .second {
     display: flex;
@@ -47,16 +69,16 @@ const ViewWrapper = styled.div`
     height: 47px;
     width: 140px;
     border-top: 1px solid #e3e3e3;
-    display: flex; 
-    justify-content: center; 
-    align-items: center; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
   .sec-que {
     height: 47px;
     /* width: 100px; 넓이 필요없음 */
-    flex: 1; 
+    flex: 1;
     border-top: 1px solid #e3e3e3;
-    display: flex; 
+    display: flex;
     /* justify-content: center; 
     align-items: center; */
   }
@@ -64,9 +86,9 @@ const ViewWrapper = styled.div`
     display: flex;
   }
   .datename {
-    display: flex; 
-    justify-content: center; 
-    align-items: center; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
     height: 47px;
     width: 140px;
     border-top: 1px solid #e3e3e3;
@@ -75,9 +97,9 @@ const ViewWrapper = styled.div`
     height: 47px;
     border-top: 1px solid #e3e3e3;
     flex: 1;
-    display: flex; 
-    justify-content: center; 
-    align-items: center; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
   .count {
     display: flex;
@@ -104,8 +126,8 @@ const ViewWrapper = styled.div`
     height: 40px;
     width: 100%;
     border-top: 1px solid #e3e3e3;
-    display: flex; 
-    align-items: center; 
+    display: flex;
+    align-items: center;
   }
   .next {
     height: 40px;
@@ -132,8 +154,15 @@ const StyledInput = styled.input`
   margin-right: 20px;
 `;
 
+const comment_data = [
+  { title: "test1", content: "test1 콘텐트입니다", date: "2022-05-28" },
+  { title: "test2", content: "test2 콘텐트입니다", date: "2022-05-29" },
+  { title: "test3", content: "test3 콘텐트입니다", date: "2022-05-30" },
+];
+
 const BoardView = () => {
   const [text, setText] = useState("");
+  const [comment, setComment] = useState(comment_data);
 
   return (
     <Container>
@@ -152,19 +181,7 @@ const BoardView = () => {
           <div className="count">hit</div>
           <div className="countnum">8175</div>
         </div>
-        <div className="content">
-
-        {parser(`     <p>
-            글 내용 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-            do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-            enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi
-            ut aliquip ex ea commodo nsequat. Duis aute irure dolor in
-            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-            pariatur. Excepteur sint occaecat cupidatat non proident, suntn
-            culpa qui officia deserunt mollit anim id est laborum.
-          </p>`)}
-     
-        </div>
+        <div className="content">{parser(`    `)}</div>
         <hr className="line" />
 
         <div className="button">
@@ -173,6 +190,17 @@ const BoardView = () => {
         <div className="comment">
           <StyledInput></StyledInput>
           <StyledButton>댓글달기</StyledButton>
+        </div>
+        <div className="commentviewrapper">
+          {comment.map((comment) => {
+            return (
+              <div className="comment-view">
+                <div className="comm-person">{comment.title}</div>
+                <div className="comm-cotent">{comment.content}</div>
+                <div className="comm-date">{comment.date}</div>
+              </div>
+            );
+          })}
         </div>
         <div className="before">이전글</div>
         <div className="next">다음글</div>
