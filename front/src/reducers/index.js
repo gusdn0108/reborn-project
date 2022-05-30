@@ -6,7 +6,10 @@ import userReducer from "./userReducer"
 
 
 const persist = {
-    key: "user", 
+
+    key: "user",
+
+
     storage, // 저장 방법 
     whitelist: ["user"] // localstorage 에 저장할 내용
 }
@@ -19,4 +22,6 @@ const rootReducer = combineReducers({
     user: userReducer
 })
 
-export default persistReducer(persist,rootReducer)
+
+export default persistReducer(persist, rootReducer)
+

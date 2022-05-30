@@ -1,10 +1,10 @@
 const initialState = {
-        email: "",
-        username: "",
-        isLogin: "",
-        isAdmin: "",
-        loadding: false,
-        error: null,
+    email: "",
+    username: "",
+    isLogin: "",
+    isAdmin: "",
+    loadding: false,
+    error: null,
 }
 
 
@@ -28,10 +28,10 @@ const userReducer = (state = initialState, action) => {
                 loadding: false,
                 error: null,
             }
-        case LOGIN_SUCCESS: 
+        case LOGIN_SUCCESS:
             return {
                 ...state,
-                me:{
+                me: {
                     ...action.payload,
                 },
                 isLogin: true,
@@ -41,8 +41,8 @@ const userReducer = (state = initialState, action) => {
             return {
                 ...state,
                 isLogin: false,
-                me:{}, 
-                error:action.error
+                me: {},
+                error: action.error
             }
         default:
             return state

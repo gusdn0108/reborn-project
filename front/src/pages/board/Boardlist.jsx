@@ -3,7 +3,13 @@ import styled from "styled-components";
 import { StyledButton } from "./BoardWrite2";
 import leftarrow from "../../img/btn_.png";
 import rightarrow from "../../img/btn_p.png";
+<<<<<<< HEAD
 import { DataTable } from "primereact/datatable";
+=======
+
+import { DataTable } from 'primereact/datatable'
+
+>>>>>>> 5d6af9b0c68d12256e49c00698875490883f0530
 import { Column } from "primereact/column";
 import { MAIN_API } from "../../lib/axios";
 import { BOARD_LIST } from "../../common/path";
@@ -149,6 +155,7 @@ const StyledInput = styled.input`
 `;
 
 const BoardList = () => {
+<<<<<<< HEAD
   const [posts, setPosts] = useState([]);
   const [isLoadding, setIsLoadding] = useState(false);
   useEffect(() => {
@@ -160,10 +167,29 @@ const BoardList = () => {
       setPosts([]);
     };
   }, []);
+=======
+  const [posts, setPosts] = useState([])
+  const [isLoadding, setIsLoadding] = useState(false)
+
+  useEffect(() => {
+    MAIN_API(setIsLoadding, BOARD_LIST, (res) => {
+      console.log(res)
+      setPosts(res.data.list)
+    })
+
+    return () => {
+      setPosts([])
+    }
+  }, [])
+
+
+
+>>>>>>> 5d6af9b0c68d12256e49c00698875490883f0530
 
   return (
     <Container>
       <ListWrapper>
+<<<<<<< HEAD
         <div className="card">
           <h2 className="title">실내 장소 추천</h2>
           <div className="table">
@@ -201,6 +227,56 @@ const BoardList = () => {
           </div>
 
           {/* <div className="card">
+=======
+
+        <DataTable value={posts} emptyMessage="게시글이 없으니 먹이를주세용 ^_^"
+          paginator responsiveLayout="scroll"
+          paginatorTemplate="CurrentPageReport FirstPageLink PrevPageLink PageLinks NextPageLink LastPageLink RowsPerPageDropdown"
+          currentPageReportTemplate="Showing {first} to {last} of {totalRecords}" rows={10} rowsPerPageOptions={[10, 20, 50]}>
+          <Column field="id" header="글번호" />
+          <Column field="subject" header="제목" />
+          <Column field="username" header="작성자" />
+          <Column field="updatedAt" header="날짜" />
+        </DataTable>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        {/* <div className="card">
+>>>>>>> 5d6af9b0c68d12256e49c00698875490883f0530
           <h2 className="title">실내 장소 추천</h2>
 
           <table className="table">

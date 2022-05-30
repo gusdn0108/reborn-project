@@ -3,13 +3,20 @@ import express from 'express'
 import Auth from './Auth'
 import Board from './Board'
 
+import Comment from './Comment'
+
+
 
 
 
 const route = express.Router()
 
 // 라우터 나누는곳
-route.use("/auth",Auth)
-route.use("/board",Board)
+
+route.use("/auth", Auth)
+route.use("/board", Board)
+route.use("/board/comment", Comment)
+
+
 
 export default route
