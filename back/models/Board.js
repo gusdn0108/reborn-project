@@ -1,24 +1,25 @@
 module.exports = (sequelize, DataTypes) => {
-    const Auth = sequelize.define('Auth', {
-        email: {
-            type: DataTypes.STRING,
-            allowNull: true,
-        },
-        username: {
+    const Board = sequelize.define('Board', {
+        content: {
             type: DataTypes.STRING,
             allowNull: false,
         },
-        password: {
+        subject: {
             type: DataTypes.STRING,
-            allowNull: true
+            allowNull: false,
+        },
+        hit: {
+            type: DataTypes.INTEGER,
+            allowNull: false,
+            // autoIncrement: true
         },
     }, {
         timestamps: true,
-        tableName: 'Auth',
+        tableName: 'Board',
         charset: 'utf8mb4',
         collate: 'utf8mb4_general_ci',
         freezeTableName: true,
     })
 
-    return Auth
+    return Board
 }

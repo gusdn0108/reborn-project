@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-
+import parser from "html-react-parser"
 import { StyledButton } from "./BoardWrite2";
 import styled from "styled-components";
 
@@ -25,9 +25,9 @@ const ViewWrapper = styled.div`
     display: flex;
   }
   .subname {
-    display: flex; //정렬위해
-    justify-content: center; //가운데 정렬
-    align-items: center; //위아래정렬
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
     height: 47px;
     width: 140px;
     border-top: 1px solid #e3e3e3;
@@ -36,9 +36,9 @@ const ViewWrapper = styled.div`
     height: 47px;
     border-top: 1px solid #e3e3e3;
     flex: 1;
-    display: flex; //정렬위해
-    justify-content: center; //가운데 정렬
-    align-items: center; //위아래정렬
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
   }
   .second {
     display: flex;
@@ -47,26 +47,26 @@ const ViewWrapper = styled.div`
     height: 47px;
     width: 140px;
     border-top: 1px solid #e3e3e3;
-    display: flex; //정렬위해
-    justify-content: center; //가운데 정렬
-    align-items: center; //위아래정렬
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
   }
   .sec-que {
     height: 47px;
     /* width: 100px; 넓이 필요없음 */
-    flex: 1; //
+    flex: 1; 
     border-top: 1px solid #e3e3e3;
-    display: flex; //정렬위해
-    /* justify-content: center; //가운데 정렬 */
-    align-items: center; //위아래정렬
+    display: flex; 
+    /* justify-content: center; 
+    align-items: center; */
   }
   .datebig {
     display: flex;
   }
   .datename {
-    display: flex; //정렬위해
-    justify-content: center; //가운데 정렬
-    align-items: center; //위아래정렬
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
     height: 47px;
     width: 140px;
     border-top: 1px solid #e3e3e3;
@@ -75,9 +75,9 @@ const ViewWrapper = styled.div`
     height: 47px;
     border-top: 1px solid #e3e3e3;
     flex: 1;
-    display: flex; //정렬위해
-    justify-content: center; //가운데 정렬
-    align-items: center; //위아래정렬
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
   }
   .count {
     display: flex;
@@ -104,8 +104,8 @@ const ViewWrapper = styled.div`
     height: 40px;
     width: 100%;
     border-top: 1px solid #e3e3e3;
-    display: flex; //정렬위해
-    align-items: center; //위아래정렬
+    display: flex; 
+    align-items: center; 
   }
   .next {
     height: 40px;
@@ -153,7 +153,8 @@ const BoardView = () => {
           <div className="countnum">8175</div>
         </div>
         <div className="content">
-          <p>
+
+          {parser(`     <p>
             글 내용 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
             do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
             enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi
@@ -161,7 +162,8 @@ const BoardView = () => {
             reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
             pariatur. Excepteur sint occaecat cupidatat non proident, suntn
             culpa qui officia deserunt mollit anim id est laborum.
-          </p>
+          </p>`)}
+
         </div>
         <hr className="line" />
 

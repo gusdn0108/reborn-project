@@ -1,4 +1,5 @@
 import route from '.'
+import { Op } from 'sequelize'
 import { Board, sequelize } from '../models'
 // import Auth from '../models/Auth'
 
@@ -37,12 +38,12 @@ router.post('/write', async (req, res) => {
 
         // }
         const { subject, content } = req.body
-        const data =req.body
-       
+        const data = req.body
+
         await Board.create({
             subject: req.body.subject,
             content: req.body.content,
-            writeUser:req.userData,
+            // writeUser: req.userData,
             hit: 0,
         })
         res.json({
@@ -60,84 +61,119 @@ router.post('/write', async (req, res) => {
         })
     }
 
-  
+
 })
 
 
-router.post('/update/:id', async(req, res) => {
+router.post('/update/:id', async (req, res) => {
     try {
-          //2. 아이디갑 검출
-          console.log(req.params)
-        const {id} = req.params
-    //3. 게시글 가져오기
-        const post = await Board.find({
-            where:{
-                id:{
-                    [Op.eq] : id
+        //2. 아이디값 검출
+        console.log(req.params)
+        const { id } = req.params
+        //3. 게시글 가져오기
+        const post = await Board.findOne({
+            where: {
+                id: {
+                    [Op.eq]: id
                 }
             }
-        })// where 문
-           //1. 자네가 이글의 주인인가? // 
-        if(post.userData.email === req.userData.email){
-                //4. 게시글 업데이트
-                await Board.update(req.body,{
-                    where:{
-                        id:{
-                            [Op.eq] : id
-                        }
+        })
+        // where 문
+        //1. 자네가 이글의 주인인가? // 
+        if (post.userData === req.userData) {
+            //4. 게시글 업데이트
+            await Board.update(req.body, {
+                where: {
+                    id: {
+                        [Op.eq]: id,
                     }
-                })
-                .then(()=>{  
-                      //5. 결과 보내기  
+                }
+            })
+                .then(() => {
+                    //5. 결과 보내기  
                     res.json({
-                        status:true,
-                        msg:'수정완료되었습니다.',
+                        status: true,
+                        msg: '수정완료되었습니다.',
                     })
-                }).catch((e)=>{
+                }).catch((e) => {
                     res.status(500).json({
-                        status:false,
-                        msg:'수정x',
+                        status: false,
+                        msg: '수정x',
                     })
                 })
-        }else {
+        } else {
             res.json({
-                status:false,
-                msg:'작성자가아닙니다.',
+                status: false,
+                msg: '작성자가아닙니다.',
             })
         }
 
-
-
-
-
     } catch (error) {
-        
+        console.log(error)
     }
-    
-
-
-
-
- 
- 
-
-
-})
-router.post('/delete/:id', (req, res) => {
-    console.log(req.params.id)
-// id 몇번째 게시판의 글을 삭제할지
-
-
-})
-router.post('/view/:id', (req, res) => {
-// id 몇번째 게시판의 글을 불러올것인지
-
 })
 
+router.post('/delete/:id', async (req, res) => {
+    try {
+        console.log(req.params.id)
+        const { id } = req.params
+        // id 몇번째 게시판의 글을 삭제할지
+        exports.delete = await Board.destroy({
+            where: {
+                id: {
+                    [Op.eq]: id,
+                }
+            }
+        })
 
-// route.use('/comment',Comment)
-// '/api/board/comment/
-// create , list ,delete , update '
+        res.json({
+            status: true,
+            // result: ,
+            msg: '게시글이 삭제되었습니다.'
+        })
+
+    } catch (e) {
+        console.log(e)
+        res.status(500).json({
+            status: false,
+            result: null,
+            msg: '예상치 못한 오류가 발생되었습니다.',
+        })
+    }
+})
+
+
+
+router.post('/view/:id', async (req, res) => {
+
+    try {
+        // id 몇번째 게시판의 글을 불러올것인지
+        const { id } = req.params
+        const view = await Board.findOne({
+            where: {
+                id: {
+                    [Op.eq]: id
+                }
+            }
+        })
+
+        res.json({
+            status: true,
+            result: view,
+            msg: '몇번째 게시글입니다.'
+        })
+
+    } catch (e) {
+        console.log(e)
+        res.status(500).json({
+            status: false,
+            result: null,
+            msg: '예상치 못한 오류가 발생되었습니다.',
+        })
+    }
+})
+
+
 
 
 

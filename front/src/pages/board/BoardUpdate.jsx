@@ -3,6 +3,8 @@ import styled from "styled-components";
 import { Editor } from "primereact/editor";
 import { StyledButton } from "./BoardWrite2";
 import "../../common/css/Board.css";
+import { useParams } from "react-router-dom";
+
 const Container = styled.div`
   max-width: 800px;
   min-height: 80vh;
@@ -91,7 +93,9 @@ const Writerapper = styled.div`
 `;
 
 const BoardUpdate = () => {
+  const { id } = useParams()
   const [text, setText] = useState();
+
   return (
     <Container>
       <Writerapper>
@@ -118,7 +122,7 @@ const BoardUpdate = () => {
             </div>
             <div className="btn-two">
               <StyledButton>취소</StyledButton>
-              <StyledButton>수정</StyledButton>
+              <StyledButton onCli>수정</StyledButton>
             </div>
           </div>
         </div>
