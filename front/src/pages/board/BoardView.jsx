@@ -1,5 +1,7 @@
 import React, { useState } from "react";
-import parser from "html-react-parser";
+
+import parser from "html-react-parser"
+
 import { StyledButton } from "./BoardWrite2";
 import styled from "styled-components";
 
@@ -47,9 +49,11 @@ const ViewWrapper = styled.div`
     display: flex;
   }
   .subname {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+
     height: 47px;
     width: 140px;
     border-top: 1px solid #e3e3e3;
@@ -58,9 +62,11 @@ const ViewWrapper = styled.div`
     height: 47px;
     border-top: 1px solid #e3e3e3;
     flex: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+
   }
   .second {
     display: flex;
@@ -69,16 +75,20 @@ const ViewWrapper = styled.div`
     height: 47px;
     width: 140px;
     border-top: 1px solid #e3e3e3;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+
   }
   .sec-que {
     height: 47px;
     /* width: 100px; 넓이 필요없음 */
-    flex: 1;
+
+    flex: 1; 
     border-top: 1px solid #e3e3e3;
-    display: flex;
+    display: flex; 
+
     /* justify-content: center; 
     align-items: center; */
   }
@@ -86,9 +96,11 @@ const ViewWrapper = styled.div`
     display: flex;
   }
   .datename {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+
     height: 47px;
     width: 140px;
     border-top: 1px solid #e3e3e3;
@@ -97,9 +109,11 @@ const ViewWrapper = styled.div`
     height: 47px;
     border-top: 1px solid #e3e3e3;
     flex: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+
   }
   .count {
     display: flex;
@@ -126,8 +140,10 @@ const ViewWrapper = styled.div`
     height: 40px;
     width: 100%;
     border-top: 1px solid #e3e3e3;
-    display: flex;
-    align-items: center;
+
+    display: flex; 
+    align-items: center; 
+
   }
   .next {
     height: 40px;
@@ -181,7 +197,21 @@ const BoardView = () => {
           <div className="count">hit</div>
           <div className="countnum">8175</div>
         </div>
-        <div className="content">{parser(`    `)}</div>
+
+        <div className="content">
+
+          {parser(`     <p>
+            글 내용 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+            do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+            enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi
+            ut aliquip ex ea commodo nsequat. Duis aute irure dolor in
+            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+            pariatur. Excepteur sint occaecat cupidatat non proident, suntn
+            culpa qui officia deserunt mollit anim id est laborum.
+          </p>`)}
+
+        </div>
+
         <hr className="line" />
 
         <div className="button">

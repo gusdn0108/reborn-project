@@ -125,98 +125,101 @@ export const StyledButton = styled.button`
 
 const BoardWrite2 = () => {
   const [writeState, setWriteState] = useState({
-    subject:'',
-    content:'',
-})
-  const [isLoadding,setIsLoadding] =useState(false)
 
-  const submitHandler = (e) =>{
-           e.preventDefault()
-            console.log(e)
-            MAIN_API(setIsLoadding,BOARD_WRITE,(res)=>{
-              console.log(res)
-            },writeState)
+    subject: '',
+    content: '',
+  })
+
+  const [isLoadding, setIsLoadding] = useState(false)
+
+  const submitHandler = (e) => {
+    e.preventDefault()
+    console.log(e)
+    MAIN_API(setIsLoadding, BOARD_WRITE, (res) => {
+      console.log(res)
+    }, writeState)
   }
-  
+
   return (
     <Container>
       <Writerapper>
-      <form onSubmit={submitHandler}>
-        <div className="full">
-          <div className="title">실내 자유 게시판 글쓰기</div>
-         
-            
-          <div className="subject-box">
-            <InputText className="subject" placeholder="제목을 입력하세요" required={true} onChange={(e)=>{
-             setWriteState({
-                ...writeState,
-                subject:e.target.value
-            })
-        }}></InputText>
+        <form onSubmit={submitHandler}>
+          <div className="full">
+            <div className="title">실내 자유 게시판 글쓰기</div>
 
-          </div>
-          <div className="editor-edit">
-            {/* <Editor
-              style={{ height: "320px" }}
-              value={text}
-              onTextChange={(e) => setText(e.htmlValue)}
-            /> */}
-            <SunEditor 
-            
-            onChange={(html)=>{
-              setWriteState((prev)=>{
-                  return {
-                      ...prev,
-                      content:html
-                  }
-              })
-          }}
-            
-            setOptions={{
-              minHeight:"300px",
-              buttonList:[
-                ['undo', 'redo'],
-                ['font', 'fontSize', 'formatBlock'],
-                ['paragraphStyle', 'blockquote'],
-                ['bold', 'underline', 'italic', 'strike', 'subscript', 'superscript'],
-                ['fontColor', 'hiliteColor', 'textStyle'],
-                ['removeFormat'],
-                '/', // Line break
-                ['outdent', 'indent'],
-                ['align', 'horizontalRule', 'list', 'lineHeight'],
-                ['table', 'link', 'image', 'video', 'audio' /** ,'math' */], // You must add the 'katex' library at options to use the 'math' plugin.
-                /** ['imageGallery'] */ // You must add the "imageGalleryUrl".
-                ['fullScreen', 'showBlocks', 'codeView'],
-                ['preview', 'print'],
-                ['save', 'template'],
-                /** ['dir', 'dir_ltr', 'dir_rtl'] */ // "dir": Toggle text direction, "dir_ltr": Right to Left, "dir_rtl": Left to Right
-              ]
-              // ,lang:lang.ko
-             }} />
+            <div className="subject-box">
+              <InputText className="subject" placeholder="제목을 입력하세요" required={true} onChange={(e) => {
+                setWriteState({
+                  ...writeState,
+                  subject: e.target.value
+                })
+              }}></InputText>
 
-          </div>
-
-          <div className="potoplus">
-            <div className="potoname">사진첨부</div>
-            <div className="potourl">인</div>
-          </div>
-          <div className="btn-group">
-            <div className="btn">
-              <StyledButton>목록</StyledButton>
             </div>
-            <div className="btn-two">
-            
-              <StyledButton>취소</StyledButton>
-              <StyledButton type="submit">등록</StyledButton>
-              {/* <button type="submit">등록</button> */}
+            <div className="editor-edit">
+              {/* <Editor
+
+
+              <SunEditor
+
+                onChange={(html) => {
+                  setWriteState((prev) => {
+                    return {
+                      ...prev,
+                      content: html
+                    }
+                  })
+                }}
+
+                setOptions={{
+                  minHeight: "300px",
+                  buttonList: [
+                    ['undo', 'redo'],
+                    ['font', 'fontSize', 'formatBlock'],
+                    ['paragraphStyle', 'blockquote'],
+                    ['bold', 'underline', 'italic', 'strike', 'subscript', 'superscript'],
+                    ['fontColor', 'hiliteColor', 'textStyle'],
+                    ['removeFormat'],
+                    '/', // Line break
+                    ['outdent', 'indent'],
+                    ['align', 'horizontalRule', 'list', 'lineHeight'],
+                    ['table', 'link', 'image', 'video', 'audio' /** ,'math' */], // You must add the 'katex' library at options to use the 'math' plugin.
+                    /** ['imageGallery'] */ // You must add the "imageGalleryUrl".
+                    ['fullScreen', 'showBlocks', 'codeView'],
+                    ['preview', 'print'],
+                    ['save', 'template'],
+                    /** ['dir', 'dir_ltr', 'dir_rtl'] */ // "dir": Toggle text direction, "dir_ltr": Right to Left, "dir_rtl": Left to Right
+                  ]
+                  // ,lang:lang.ko
+                }} />
+
+            </div>
+
+            <div className="potoplus">
+              <div className="potoname">사진첨부</div>
+              <div className="potourl">사진은 좀 나중에</div>
+            </div>
+            <div className="btn-group">
+              <div className="btn">
+                <StyledButton>목록</StyledButton>
+              </div>
+              <div className="btn-two">
+
+                <StyledButton>취소</StyledButton>
+                <StyledButton type="submit">등록</StyledButton>
+                {/* <button type="submit">등록</button> */}
+
+              </div>
+
 
             </div>
            
           </div>
-        </div>
 
-          </form>
-        
+
+        </form>
+
+
       </Writerapper>
     </Container>
   );

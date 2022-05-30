@@ -15,7 +15,7 @@ import { AUTH_SIGNIN } from '../../common/path';
 
 
 const Login = () => {
-  const auth = useSelector((state)=>{
+  const auth = useSelector((state) => {
     return state.auth
   })
 
@@ -51,16 +51,26 @@ const Login = () => {
     setShowMessage(true);
     form.restart();
 
-    MAIN_API(setIsLoding,AUTH_SIGNIN,(res)=>{
+
+    MAIN_API(setIsLoding, AUTH_SIGNIN, (res) => {
+
       if (res.data.status) {
         Signin(data)
         localStorage.setItem(`token`, res.data.token);
       }
+
+    }, data)
+
+
+
+
+
     },data)
     
    
   
    
+
   };
 
   // useEffect(() => {

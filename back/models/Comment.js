@@ -1,26 +1,22 @@
 module.exports = (sequelize, DataTypes) => {
+    const Comment = sequelize.define('Comment', {
 
-    const Auth = sequelize.define('Auth', {
-        email: {
-            type: DataTypes.STRING,
-            allowNull: true,
-        },
-        username: {
+        comment: {
             type: DataTypes.STRING,
             allowNull: false,
         },
-        password: {
+        nickname: {
             type: DataTypes.STRING,
-            allowNull: true
+            allowNull: false,
         },
-    }, {
 
+    }, {
         timestamps: true,
-        tableName: 'Auth',
+        tableName: 'Comment',
         charset: 'utf8mb4',
         collate: 'utf8mb4_general_ci',
         freezeTableName: true,
     })
 
-    return Auth
+    return Comment
 }
