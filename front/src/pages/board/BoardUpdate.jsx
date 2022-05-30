@@ -93,9 +93,9 @@ const Writerapper = styled.div`
 `;
 
 const BoardUpdate = () => {
-  const {id} = useParams()
+  const { id } = useParams();
   const [text, setText] = useState();
-  
+
   return (
     <Container>
       <Writerapper>
@@ -113,8 +113,8 @@ const BoardUpdate = () => {
             />
           </div>
           <div className="potoplus">
-            <div className="potoname">사진첨부</div>
-            <div className="potourl">인</div>
+            <div className="potoname"></div>
+            <div className="potourl"></div>
           </div>
           <div className="btn-group">
             <div className="btn">
