@@ -1,9 +1,15 @@
 module.exports = (sequelize, DataTypes) => {
     const Comment = sequelize.define('Comment', {
+
         comment: {
             type: DataTypes.STRING,
-            allowNull: true,
+            allowNull: false,
         },
+        nickname: {
+            type: DataTypes.STRING,
+            allowNull: false,
+        },
+
     }, {
         timestamps: true,
         tableName: 'Comment',

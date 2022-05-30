@@ -117,7 +117,7 @@ const BoardList = () => {
           currentPageReportTemplate="Showing {first} to {last} of {totalRecords}" rows={10} rowsPerPageOptions={[10, 20, 50]}>
           <Column field="id" header="글번호" />
           <Column field="subject" header="제목" />
-          <Column field="userid" header="작성자" />
+          <Column field="username" header="작성자" />
           <Column field="updatedAt" header="날짜" />
         </DataTable>
 

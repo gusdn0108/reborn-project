@@ -1,6 +1,7 @@
 import route from '.'
 import { Op } from 'sequelize'
-import { Board, sequelize } from '../models'
+import { Auth, Board, Comment, sequelize } from '../models'
+
 // import Auth from '../models/Auth'
 
 
@@ -11,6 +12,11 @@ const router = express.Router()
 router.post('/list', async (req, res) => {
     try {
         const list = await Board.findAll({
+            order: [['id', 'DESC']],
+            // inclide: [{
+            //     model: Auth,
+            //     attributes: ['username', 'username']
+            // }]
             // 내림차순? 쓰삼
             // 도큐멘트 근본 수업 
         })
@@ -43,6 +49,7 @@ router.post('/write', async (req, res) => {
         await Board.create({
             subject: req.body.subject,
             content: req.body.content,
+            username: req.body.username,
             // writeUser: req.userData,
             hit: 0,
         })
@@ -60,8 +67,6 @@ router.post('/write', async (req, res) => {
             msg: '예상치 못한 오류가 발생되었습니다.',
         })
     }
-
-
 })
 
 

@@ -12,7 +12,8 @@ const route = express.Router()
 // 라우터 나누는곳
 route.use("/auth", Auth)
 route.use("/board", Board)
-// route.use("/board/comment", Comment)
+route.use("/board/comment", Comment)
+
 
 
 export default route
