@@ -1,14 +1,16 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
-import { InputText } from 'primereact/inputtext';
+import { InputText } from "primereact/inputtext";
 // import { Editor } from "primereact/editor";
 // 에디터 체인지
-import SunEditor from 'suneditor-react';
-import 'suneditor/dist/css/suneditor.min.css';
+import SunEditor from "suneditor-react";
+import "suneditor/dist/css/suneditor.min.css";
 // import { StyledButton } from "./BoardWrite";
 import "../../common/css/Board.css";
 import { MAIN_API } from "../../lib/axios";
 import { BOARD_WRITE } from "../../common/path";
+import { Link } from "react-router-dom";
+
 const Container = styled.div`
   max-width: 800px;
   min-height: 80vh;
@@ -26,7 +28,7 @@ const Writerapper = styled.div`
   margin-top: 20px;
   .title {
     color: #333;
-    font-family: "HallymMjo-Regular";
+    font: 600 11px/13px "Open Sans", sans-serif;
     font-size: 15px;
     height: 20px;
     width: 220px;
@@ -55,8 +57,8 @@ const Writerapper = styled.div`
     height: 47px;
     width: 140px;
     flex: 1;
-    display: felx; 
-    align-items: center; 
+    display: felx;
+    align-items: center;
     border-bottom: 1px solid #e3e3e3;
     border-top: 2px solid #e3e3e3;
     font-family: "HallymMjo-Regular";
@@ -125,6 +127,26 @@ export const StyledButton = styled.button`
 
 const BoardWrite2 = () => {
   const [writeState, setWriteState] = useState({
+<<<<<<< HEAD
+    subject: "",
+    content: "",
+  });
+  const [isLoadding, setIsLoadding] = useState(false);
+
+  const submitHandler = (e) => {
+    e.preventDefault();
+    console.log(e);
+    MAIN_API(
+      setIsLoadding,
+      BOARD_WRITE,
+      (res) => {
+        console.log(res);
+      },
+      writeState
+    );
+  };
+
+=======
 
     subject: '',
     content: '',
@@ -140,6 +162,7 @@ const BoardWrite2 = () => {
     }, writeState)
   }
 
+>>>>>>> 5d6af9b0c68d12256e49c00698875490883f0530
   return (
     <Container>
       <Writerapper>
@@ -148,6 +171,65 @@ const BoardWrite2 = () => {
             <div className="title">실내 자유 게시판 글쓰기</div>
 
             <div className="subject-box">
+<<<<<<< HEAD
+              <InputText
+                className="subject"
+                placeholder="제목을 입력하세요"
+                required={true}
+                onChange={(e) => {
+                  setWriteState({
+                    ...writeState,
+                    subject: e.target.value,
+                  });
+                }}
+              ></InputText>
+            </div>
+            <div className="editor-edit">
+              {/* <Editor
+              style={{ height: "320px" }}
+              value={text}
+              onTextChange={(e) => setText(e.htmlValue)}
+            /> */}
+              <SunEditor
+                onChange={(html) => {
+                  setWriteState((prev) => {
+                    return {
+                      ...prev,
+                      content: html,
+                    };
+                  });
+                }}
+                setOptions={{
+                  minHeight: "300px",
+                  buttonList: [
+                    ["undo", "redo"],
+                    ["font", "fontSize", "formatBlock"],
+                    ["paragraphStyle", "blockquote"],
+                    [
+                      "bold",
+                      "underline",
+                      "italic",
+                      "strike",
+                      "subscript",
+                      "superscript",
+                    ],
+                    ["fontColor", "hiliteColor", "textStyle"],
+                    ["removeFormat"],
+                    "/", // Line break
+                    ["outdent", "indent"],
+                    ["align", "horizontalRule", "list", "lineHeight"],
+                    ["table", "link", "image", "video", "audio" /** ,'math' */], // You must add the 'katex' library at options to use the 'math' plugin.
+                    /** ['imageGallery'] */ // You must add the "imageGalleryUrl".
+                    ["fullScreen", "showBlocks", "codeView"],
+                    ["preview", "print"],
+                    ["save", "template"],
+                    /** ['dir', 'dir_ltr', 'dir_rtl'] */ // "dir": Toggle text direction, "dir_ltr": Right to Left, "dir_rtl": Left to Right
+                  ],
+                  // ,lang:lang.ko
+                }}
+              />
+            </div>
+=======
               <InputText className="subject" placeholder="제목을 입력하세요" required={true} onChange={(e) => {
                 setWriteState({
                   ...writeState,
@@ -211,8 +293,31 @@ const BoardWrite2 = () => {
 
               </div>
 
+>>>>>>> 5d6af9b0c68d12256e49c00698875490883f0530
 
+            <div className="potoplus">
+              <div className="potoname"></div>
+              <div className="potourl"></div>
             </div>
+<<<<<<< HEAD
+            <div className="btn-group">
+              <div className="btn">
+                <Link to="/list">
+                  <StyledButton>목록</StyledButton>
+                </Link>
+              </div>
+              <div className="btn-two">
+                <Link to="/list">
+                  <StyledButton>취소</StyledButton>
+                </Link>
+                <StyledButton type="submit">등록</StyledButton>
+
+                {/* <button type="submit">등록</button> */}
+              </div>
+            </div>
+          </div>
+        </form>
+=======
            
           </div>
 
@@ -220,6 +325,7 @@ const BoardWrite2 = () => {
         </form>
 
 
+>>>>>>> 5d6af9b0c68d12256e49c00698875490883f0530
       </Writerapper>
     </Container>
   );

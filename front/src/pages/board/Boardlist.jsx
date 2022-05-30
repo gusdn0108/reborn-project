@@ -3,40 +3,104 @@ import styled from "styled-components";
 import { StyledButton } from "./BoardWrite2";
 import leftarrow from "../../img/btn_.png";
 import rightarrow from "../../img/btn_p.png";
+<<<<<<< HEAD
+import { DataTable } from "primereact/datatable";
+=======
 
 import { DataTable } from 'primereact/datatable'
 
+>>>>>>> 5d6af9b0c68d12256e49c00698875490883f0530
 import { Column } from "primereact/column";
 import { MAIN_API } from "../../lib/axios";
 import { BOARD_LIST } from "../../common/path";
+import { Link } from "react-router-dom";
+
 const ListWrapper = styled.div`
   .table {
-    border-top: 1px solid #eee;
+    /* border-top: 1px solid #eee; */
     border-collapse: collapse;
     color: #555;
     width: 100%;
     margin-bottom: 20px;
-    th,
-    td {
-      border: 1px solid #eee;
-      border-left: none;
-      border-right: none;
-      padding: 10px;
-      border-top: 1px dotted #e3e3e3;
-      text-align: center;
-      font: 600 11px/13px "Open Sans", sans-serif;
-    }
-    .w-50 {
-      width: 50px;
+  }
+  .bigcard {
+    background: #fff;
+    font: 545 11px/13px "Open Sans", sans-serif;
+    width: 100%;
+    height: 100%;
+    font-size: 13px;
+    margin-top: 13px;
+    padding: 12 4px;
+    /* border-bottom: 1px solid #eee; */
+    text-align: center;
+    th td {
+      /* text-align: center; */
     }
   }
-  .button-group {
+
+  .p-datatable-thead {
+    /* background-color: #fbeded; */
+    /* background-color: #fbf2f2; */
+    /* background-color: #fff2f2; */
+    background-color: #fbe7e7;
+    border-bottom: 1px solid #e3e3e3;
+    border-top: 1px solid #e3e3e3;
+  }
+
+  .p-datatable-tbody {
+    /* margin-bottom: black; */
+    /* border-top: 1px solid #e3e3e3; */
+    /* background-color: red; */
+    tr {
+      border-bottom: 1px solid #e3e3e3;
+    }
+    td {
+      border-bottom: 1px solid #e3e3e3;
+    }
+  }
+
+  .boxid {
+    text-align: center;
+    /* background-color: red; */
+    padding: 11px;
+  }
+  .boxsub {
+    text-align: center;
+    /* background-color: yellow; */
+    width: 280px;
+  }
+  .p-datatable {
+    /* background-color: orange; */
+  }
+  .p-column-header-content {
+    text-align: center;
+    /* background-color: green; */
+    justify-content: center;
+  }
+
+  .datatable-wrapper {
+    border-bottom: 1px solid #555;
+  }
+
+  .p-paginator {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 22px;
+    /* background-color: purple; */
+  }
+  .button-write {
     display: flex;
     justify-content: flex-end;
+    /* border-top: 1px solid #eee; */
+    padding-top: 13px;
   }
+
   .search {
     margin: 12px 0;
     display: flex;
+    /* background-color: red; */
   }
   .click {
     margin: 0 4px;
@@ -44,10 +108,10 @@ const ListWrapper = styled.div`
   .title {
     width: 220px;
     margin: 0px auto;
-    height: 17px;
+    height: 27px;
     /* background: url(/web/upload/romi/bg/top_bg.png) bottom center repeat-x; */
     padding: 10px 0;
-    font: 600 11px/13px "Open Sans", sans-serif;
+    font: 18px/13px "Open Sans", sans-serif;
     color: #333;
     text-align: center;
     letter-spacing: 3px;
@@ -71,7 +135,7 @@ const ListWrapper = styled.div`
     margin: 3px;
   }
   .middle {
-    display: flex; 
+    display: flex;
     justify-content: center;
     height: 40px;
     font-size: 12px;
@@ -83,10 +147,6 @@ const Container = styled.div`
   background-color: #fff;
   padding: 16px;
   margin: 20px auto;
-  border-radius: 5px;
-  border: 1px solid #ddd;
-  border-left: none;
-  border-right: none;
 `;
 
 const StyledInput = styled.input`
@@ -95,6 +155,19 @@ const StyledInput = styled.input`
 `;
 
 const BoardList = () => {
+<<<<<<< HEAD
+  const [posts, setPosts] = useState([]);
+  const [isLoadding, setIsLoadding] = useState(false);
+  useEffect(() => {
+    MAIN_API(setIsLoadding, BOARD_LIST, (res) => {
+      setPosts(res.data.list);
+    });
+
+    return () => {
+      setPosts([]);
+    };
+  }, []);
+=======
   const [posts, setPosts] = useState([])
   const [isLoadding, setIsLoadding] = useState(false)
 
@@ -111,10 +184,50 @@ const BoardList = () => {
 
 
 
+>>>>>>> 5d6af9b0c68d12256e49c00698875490883f0530
 
   return (
     <Container>
       <ListWrapper>
+<<<<<<< HEAD
+        <div className="card">
+          <h2 className="title">실내 장소 추천</h2>
+          <div className="table">
+            <DataTable
+              className="bigcard"
+              value={posts}
+              emptyMessage="게시글이 없으니 먹이를주세용 ^_^"
+              paginator
+              responsiveLayout="scroll"
+              paginatorTemplate="CurrentPageReport FirstPageLink PrevPageLink PageLinks NextPageLink LastPageLink RowsPerPageDropdown"
+              currentPageReportTemplate=""
+              rows={10}
+              rowsPerPageOptions={[10, 20, 50]}
+            >
+              <Column className="boxid" field="id" header="글번호" />
+              <Column className="boxsub" field="subject" header="제목" />
+              <Column field="userid" header="작성자" />
+              <Column field="updatedAt" header="날짜" />
+            </DataTable>
+          </div>
+          <div className=""></div>
+          <div className="button-write">
+            <Link to="/write">
+              <StyledButton>글쓰기</StyledButton>
+            </Link>
+          </div>
+          <div className="search">
+            <select className="click">
+              <option>전체</option>
+              <option>한달</option>
+              <option>일주일</option>
+            </select>
+            <StyledInput></StyledInput>
+            <StyledButton>검색</StyledButton>
+          </div>
+
+          {/* <div className="card">
+=======
 
         <DataTable value={posts} emptyMessage="게시글이 없으니 먹이를주세용 ^_^"
           paginator responsiveLayout="scroll"
@@ -163,6 +276,7 @@ const BoardList = () => {
 
 
         {/* <div className="card">
+>>>>>>> 5d6af9b0c68d12256e49c00698875490883f0530
           <h2 className="title">실내 장소 추천</h2>
 
           <table className="table">
@@ -222,6 +336,7 @@ const BoardList = () => {
           <StyledInput></StyledInput>
           <StyledButton>검색</StyledButton>
         </div> */}
+        </div>
       </ListWrapper>
     </Container>
   );

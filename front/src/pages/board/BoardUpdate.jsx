@@ -166,7 +166,7 @@ const Writerapper = styled.div`
   margin-top: 20px;
   .title {
     color: #333;
-    font-family: "HallymMjo-Regular";
+    font: 600 11px/13px "Open Sans", sans-serif;
     font-size: 15px;
     height: 20px;
     width: 220px;
@@ -189,7 +189,7 @@ const Writerapper = styled.div`
     align-items: center;
     border-bottom: 1px solid #e3e3e3;
     border-top: 2px solid #e3e3e3;
-    font-family: "HallymMjo-Regular";
+    font: "Open Sans", sans-serif;
   }
   .subject-empty {
     height: 47px;
@@ -264,6 +264,10 @@ export const StyledButton = styled.button`
 `;
 
 const BoardUpdate = () => {
+<<<<<<< HEAD
+  const { id } = useParams();
+  const [text, setText] = useState();
+=======
 
   const [writeState, setWriteState] = useState({
     subject: '',
@@ -280,6 +284,7 @@ const BoardUpdate = () => {
     }, writeState)
   }
 
+>>>>>>> 5d6af9b0c68d12256e49c00698875490883f0530
 
   return (
     <Container>
@@ -302,6 +307,17 @@ const BoardUpdate = () => {
               style={{ height: "320px" }}
               value={text}
               onTextChange={(e) => setText(e.htmlValue)}
+<<<<<<< HEAD
+            />
+          </div>
+          <div className="potoplus">
+            <div className="potoname"></div>
+            <div className="potourl"></div>
+          </div>
+          <div className="btn-group">
+            <div className="btn">
+              <StyledButton>목록</StyledButton>
+=======
             /> */}
               <SunEditor
 
@@ -336,6 +352,7 @@ const BoardUpdate = () => {
                   // ,lang:lang.ko
                 }} />
 
+>>>>>>> 5d6af9b0c68d12256e49c00698875490883f0530
             </div>
 
             <div className="potoplus">
