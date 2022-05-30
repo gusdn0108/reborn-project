@@ -1,21 +1,17 @@
 module.exports = (sequelize, DataTypes) => {
     const Auth = sequelize.define('Auth',{
         email:{
-            type:DataTypes.STRING(400),
+            type:DataTypes.STRING,
             allowNull: true,
         },
         username:{
-            type:DataTypes.STRING(30),
+            type:DataTypes.STRING,
             allowNull: false,
         },
         password:{
-            type:DataTypes.STRING(100),
+            type:DataTypes.STRING,
             allowNull:true
         },
-        birth:{
-            type:DataTypes.STRING,
-            allowNull,
-        }
     },{
         timestamps: true,
         tableName: 'Auth',

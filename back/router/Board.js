@@ -66,7 +66,7 @@ router.post('/write', async (req, res) => {
 
 router.post('/update/:id', async(req, res) => {
     try {
-          //2. 아이디갑 검출
+          //2. 아이디값 검출
           console.log(req.params)
         const {id} = req.params
     //3. 게시글 가져오기

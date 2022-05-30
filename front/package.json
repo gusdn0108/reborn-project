@@ -21,6 +21,7 @@
     "chart.js": "3.3.2",
     "classnames": "^2.2.6",
     "final-form": "^4.20.7",
+    "html-react-parser": "^1.4.13",
     "primeflex": "3.1.0",
     "primeicons": "^5.0.0",
     "primereact": "7.2.0",

@@ -10,6 +10,8 @@ import '../../common/css/SignUp.css'
 import { Link } from 'react-router-dom';
 import { useDispatch , useSelector } from 'react-redux';
 import { login_request} from '../../reducers/userReducer';
+import { MAIN_API } from '../../lib/axios';
+import { AUTH_SIGNIN } from '../../common/path';
 
 
 const Login = () => {
@@ -48,7 +50,15 @@ const Login = () => {
     setFormData(data);
     setShowMessage(true);
     form.restart();
-    Signin(data)
+
+    MAIN_API(setIsLoding,AUTH_SIGNIN,(res)=>{
+      if (res.data.status) {
+        Signin(data)
+        localStorage.setItem(`token`, res.data.token);
+      }
+    },data)
+    
+   
   
    
   };
