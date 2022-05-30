@@ -6,6 +6,7 @@ const sequelize = new Sequelize(config.database, config.username, config.passwor
 
 
 // db불러오는곳 예제 코드
+
 const Auth = require('./Auth')(sequelize, DataTypes)
 const Board = require('./Board')(sequelize, DataTypes)
 const Comment = require('./Comment')(sequelize, DataTypes)
@@ -20,6 +21,7 @@ db.Sequelize = Sequelize;
 db.Auth = Auth
 db.Board = Board
 db.Comment = Comment
+
 
 
 

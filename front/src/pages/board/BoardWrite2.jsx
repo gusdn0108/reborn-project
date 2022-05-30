@@ -125,6 +125,7 @@ export const StyledButton = styled.button`
 
 const BoardWrite2 = () => {
   const [writeState, setWriteState] = useState({
+
     subject: '',
     content: '',
   })
@@ -157,10 +158,8 @@ const BoardWrite2 = () => {
             </div>
             <div className="editor-edit">
               {/* <Editor
-              style={{ height: "320px" }}
-              value={text}
-              onTextChange={(e) => setText(e.htmlValue)}
-            /> */}
+
+
               <SunEditor
 
                 onChange={(html) => {
@@ -212,10 +211,14 @@ const BoardWrite2 = () => {
 
               </div>
 
+
             </div>
+           
           </div>
 
+
         </form>
+
 
       </Writerapper>
     </Container>

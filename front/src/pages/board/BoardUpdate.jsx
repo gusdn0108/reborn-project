@@ -142,9 +142,11 @@ import SunEditor from 'suneditor-react';
 import 'suneditor/dist/css/suneditor.min.css';
 // import { StyledButton } from "./BoardWrite";
 import "../../common/css/Board.css";
+
 import { MAIN_API } from "../../lib/axios";
 import { BOARD_UPDATE } from "../../common/path";
 import { useParams } from "react-router-dom";
+
 
 
 const Container = styled.div`
@@ -262,6 +264,7 @@ export const StyledButton = styled.button`
 `;
 
 const BoardUpdate = () => {
+
   const [writeState, setWriteState] = useState({
     subject: '',
     content: '',
@@ -276,6 +279,7 @@ const BoardUpdate = () => {
       console.log(res)
     }, writeState)
   }
+
 
   return (
     <Container>
@@ -338,6 +342,7 @@ const BoardUpdate = () => {
               <div className="potoname">사진첨부</div>
               <div className="potourl">사진은 좀 나중에</div>
             </div>
+
             <div className="btn-group">
               <div className="btn">
                 <StyledButton>목록</StyledButton>
@@ -349,6 +354,7 @@ const BoardUpdate = () => {
                 {/* <button type="submit">등록</button> */}
 
               </div>
+
 
             </div>
           </div>

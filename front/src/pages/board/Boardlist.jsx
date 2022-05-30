@@ -3,7 +3,9 @@ import styled from "styled-components";
 import { StyledButton } from "./BoardWrite2";
 import leftarrow from "../../img/btn_.png";
 import rightarrow from "../../img/btn_p.png";
+
 import { DataTable } from 'primereact/datatable'
+
 import { Column } from "primereact/column";
 import { MAIN_API } from "../../lib/axios";
 import { BOARD_LIST } from "../../common/path";
@@ -95,6 +97,7 @@ const StyledInput = styled.input`
 const BoardList = () => {
   const [posts, setPosts] = useState([])
   const [isLoadding, setIsLoadding] = useState(false)
+
   useEffect(() => {
     MAIN_API(setIsLoadding, BOARD_LIST, (res) => {
       console.log(res)
@@ -108,9 +111,11 @@ const BoardList = () => {
 
 
 
+
   return (
     <Container>
       <ListWrapper>
+
         <DataTable value={posts} emptyMessage="게시글이 없으니 먹이를주세용 ^_^"
           paginator responsiveLayout="scroll"
           paginatorTemplate="CurrentPageReport FirstPageLink PrevPageLink PageLinks NextPageLink LastPageLink RowsPerPageDropdown"
@@ -120,6 +125,41 @@ const BoardList = () => {
           <Column field="username" header="작성자" />
           <Column field="updatedAt" header="날짜" />
         </DataTable>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
         {/* <div className="card">

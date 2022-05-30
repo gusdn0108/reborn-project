@@ -72,6 +72,7 @@ router.post('/write', async (req, res) => {
 
 router.post('/update/:id', async (req, res) => {
     try {
+
         //2. 아이디값 검출
         console.log(req.params)
         const { id } = req.params
@@ -80,6 +81,7 @@ router.post('/update/:id', async (req, res) => {
             where: {
                 id: {
                     [Op.eq]: id
+
                 }
             }
         })

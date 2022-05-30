@@ -1,3 +1,4 @@
+
 import jwt from 'jsonwebtoken'
 import env from 'dotenv'
 env.config()
@@ -19,10 +20,12 @@ const AuthCheck = async (req, res, next) => {
                 console.log('토큰 Not 유효')
                 req.userData = null
                 req.isLogin = false
+
             }
         } catch (error) {
             //error
             console.log('토큰ERROR')
+
             req.userData = null
             req.isLogin = false
         }
@@ -33,5 +36,7 @@ const AuthCheck = async (req, res, next) => {
     }
 
     await next()
+
+
 }
 export default AuthCheck

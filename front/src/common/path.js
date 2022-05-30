@@ -4,6 +4,7 @@ const auth = `${apiurl}/auth`
 const board = `${apiurl}/board`
 const comment = `${apiurl}/board/comment`
 
+
 // ------------------------------auth---------------------------------
 export const AUTH_SIGNUP = `${auth}/signup`
 export const AUTH_SIGNIN = `${auth}/signin`
@@ -12,6 +13,11 @@ export const AUTH_SIGNIN = `${auth}/signin`
 export const BOARD_WRITE = `${board}/write`
 export const BOARD_LIST = `${board}/list`
 export const BOARD_UPDATE = `${board}/update/`
+
+export const BOARD_WRITE = `${board}/write`
+export const BOARD_LIST = `${board}/list`
+export const BOARD_UPDATE = `${board}/update/`
+
 
 
 // ------------------------------comment---------------------------------
