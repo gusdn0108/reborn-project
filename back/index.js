@@ -3,6 +3,7 @@ import cors from 'cors'
 import router from './router'
 import path from 'path'
 import {  sequelize } from './models'
+import AuthCheck from "./lib/AuthCheck"
 import dotenv from "dotenv";
 
 
@@ -16,6 +17,7 @@ app.use(cors({
 }))
 
 dotenv.config();
+app.use(AuthCheck)
 app.use(express.json({ limit: '500mb' }));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.urlencoded({ limit: '500mb', extended: true }));

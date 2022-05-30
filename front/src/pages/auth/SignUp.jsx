@@ -11,6 +11,8 @@ import { Divider } from 'primereact/divider';
 import { classNames } from 'primereact/utils';
 import '../../common/css/SignUp.css'
 import { useNavigate } from "react-router-dom"
+import { MAIN_API } from '../../lib/axios';
+import { AUTH_SIGNUP } from '../../common/path';
 
 
 
@@ -50,7 +52,9 @@ const SignUp = () => {
         setShowMessage(true);
         form.restart();
         console.log(data)
-    
+        MAIN_API(setIsLoding,AUTH_SIGNUP,(res)=>{
+
+        },data)
     };
 
     const isFormFieldValid = (meta) => !!(meta.touched && meta.error);

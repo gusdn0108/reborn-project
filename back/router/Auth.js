@@ -11,6 +11,7 @@ const router = express.Router()
 router.post('/signup', (req, res) => {
     const { password } = req.body
     try {
+        console.log('signup')
         bcrypt.hash(password, 10, async (err, hash) => {
 
             req.body.password = hash
@@ -27,10 +28,11 @@ router.post('/signup', (req, res) => {
         })
 
     } catch (e) {
+        console.log(e)
         res.status(500).json({
             status: false,
             result: null,
-            msg: '예상치 못한 오류가 발생되었습니다.',
+            msg: '예상치 못한 오류가 발생되었습니다. -ㅅ-',
         })
     }
 })
