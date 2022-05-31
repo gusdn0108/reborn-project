@@ -1,4 +1,3 @@
-
 module.exports = (sequelize, DataTypes) => {
     const Board = sequelize.define('Board', {
         content: {
@@ -13,8 +12,9 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.INTEGER,
             allowNull: false,
             // autoIncrement: true
+
         }, 
-        
+
     }, {
         timestamps: true,
         tableName: 'Board',
@@ -28,6 +28,7 @@ module.exports = (sequelize, DataTypes) => {
 
 
     return Board
+
 }
 
 
@@ -35,3 +36,5 @@ module.exports = (sequelize, DataTypes) => {
 //  가장 큰 이유는 실무를 예로 들면 Emoji 타입을
 //   디비에 넣을 수 있는 타입이기 때문이다. 
 // 그냥 utf8 이런걸로 하면 Emoji 저장 제대로 안되니까 주의하자.
+
+}

@@ -52,9 +52,11 @@ const SignUp = () => {
         setShowMessage(true);
         form.restart();
         console.log(data)
-        MAIN_API(setIsLoding,AUTH_SIGNUP,(res)=>{
 
-        },data)
+        MAIN_API(setIsLoding, AUTH_SIGNUP, (res) => {
+
+        }, data)
+
     };
 
     const isFormFieldValid = (meta) => !!(meta.touched && meta.error);
