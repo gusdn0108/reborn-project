@@ -15,6 +15,7 @@ import Button from "../../common/Button";
 import './login.css'
 
 const Login = () => {
+  const LoginCheck = localStorage
   const auth = useSelector((state) => {
     return state.user.me
   });
@@ -69,6 +70,8 @@ const Login = () => {
       data
     );
   };
+
+
 
   // useEffect(() => {
   //   if (user.isLogin === true) {
@@ -169,6 +172,7 @@ const Login = () => {
                     </div>
                   )}
                 />
+
               <ul >
                <Button type="submit" className="loginsubmit" >로그인</Button>
               <Button className="hell" to="/signup" >회원가입</Button>

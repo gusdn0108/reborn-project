@@ -1,5 +1,5 @@
 import React from "react";
-import {BrowserRouter as Router, Link, Routes, Route} from 'react-router-dom'
+import { BrowserRouter as Router, Link, Routes, Route } from 'react-router-dom'
 import Container from "./common/Container";
 import Footer from "./common/Footer";
 import Header from "./common/Header";
@@ -15,20 +15,20 @@ import Main from "./pages/Main";
 function App() {
   return (
     <>
-    
+
       <Header />
-        <Container>
-          <Routes>
-            <Route path="/" element={<Main />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/signup" element={<Signup />} />
-            <Route path="/board/write" element={<BoardWrite2 />} />
-            <Route path="/board/update/:id" element={<BoardUpdate />} />
-            <Route path="/board/view/:id" element={<BoardView />} />
-            <Route path="/board/list" element={<BoardList />} />
-          </Routes>
-        </Container>
-       
+      <Container>
+        <Routes>
+          <Route path="/" element={<Main />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<Signup />} />
+          <Route path="/board/write" element={<BoardWrite2 />} />
+          <Route path="/board/update/:id" element={<BoardUpdate />} />
+          <Route path="/board/view/:id" element={<BoardView />} />
+          <Route path="/board/list" element={<BoardList />} />
+        </Routes>
+      </Container>
+
       <Footer>Copyright All right &copy; reserved</Footer>
     </>
   );
