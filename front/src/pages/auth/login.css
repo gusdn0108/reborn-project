@@ -1,0 +1,30 @@
+.loginsubmit{
+    margin-left: 170px;
+}
+.p-error{
+    color: red;
+}
+.p-float-label label{
+    margin-left: 10px;
+}
+
+#alertlogin{
+    height: 200px;
+    background-color: rgb(255, 238, 241);
+    border-radius: 50px ;
+}
+
+.p-dialog-content{
+    margin-top: 250px;
+}
+
+#loginalert{
+    background-color: rgb(255, 238, 241);
+    border-radius: 50px ;
+}   
+
+
+.hell{
+   margin: 10px;
+   text-decoration: none;
+}
