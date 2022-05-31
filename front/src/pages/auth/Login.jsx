@@ -106,7 +106,7 @@ const Login = () => {
         <div id="loginalert"className="flex align-items-center flex-column pt-6 px-3">
           <i className="pi pi-check-circle" style={{ fontSize: '10rem', color: 'var(--green-500)' }}></i>
           <p style={{ lineHeight: 7, textIndent: '1rem', fontSize: 20 }}>
-            환영합니다. {auth.username}님 !
+            환영합니다.
           </p>
         </div>
         </Dialog>
@@ -171,7 +171,7 @@ const Login = () => {
                 />
               <ul >
                <Button type="submit" className="loginsubmit" >로그인</Button>
-               <Link to="/signup"><Button className="hell" >회원가입</Button></Link>
+              <Button className="hell" to="/signup" >회원가입</Button>
               
                 </ul>
               </form>
