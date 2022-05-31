@@ -165,7 +165,7 @@ const BoardList = () => {
     <Container>
       <ListWrapper>
         <div className="card">
-          <h2 className="title">실내 장소 추천</h2>
+          <h2 className="title">데이트 장소 추천</h2>
           <div className="table">
             <DataTable
               className="bigcard"
@@ -181,7 +181,7 @@ const BoardList = () => {
             >
               <Column className="boxid" field="id" header="글번호" />
               <Column className="boxsub" field="subject" header="제목" />
-              <Column field="userid" header="작성자" />
+              <Column field="username" header="작성자" />
               <Column field="updatedAt" header="날짜" />
             </DataTable>
           </div>

@@ -13,11 +13,9 @@ const Template = styled.div`
 `
 
 
-
-
-const Container = ({children}) => {
+const Container = ({ children }) => {
     return (
-       
+
         <Template>
             {children}
         </Template>

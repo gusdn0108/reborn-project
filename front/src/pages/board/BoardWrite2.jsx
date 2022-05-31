@@ -150,7 +150,7 @@ const BoardWrite2 = () => {
       <Writerapper>
         <form onSubmit={submitHandler}>
           <div className="full">
-            <div className="title">실내 자유 게시판 글쓰기</div>
+            <div className="title">자유 게시판 글쓰기</div>
 
             <div className="subject-box">
               <InputText
@@ -161,6 +161,19 @@ const BoardWrite2 = () => {
                   setWriteState({
                     ...writeState,
                     subject: e.target.value,
+                  });
+                }}
+              ></InputText>
+            </div>
+            <div className="subject-box">
+              <InputText
+                className="username"
+                placeholder="작성자"
+                required={true}
+                onChange={(e) => {
+                  setWriteState({
+                    ...writeState,
+                    username: e.target.value,
                   });
                 }}
               ></InputText>

@@ -14,6 +14,7 @@ import { MAIN_API } from "../../lib/axios";
 import { AUTH_SIGNIN } from "../../common/path";
 
 const Login = () => {
+  const LoginCheck = localStorage
   const auth = useSelector((state) => {
     return state.auth;
   });
@@ -63,6 +64,8 @@ const Login = () => {
       data
     );
   };
+
+
 
   // useEffect(() => {
   //   if (user.isLogin === true) {
@@ -198,6 +201,7 @@ const Login = () => {
                     </div>
                   )}
                 />
+                {/* <>{LoginCheck.length === 2 ? <Button type="submit" label="로그아웃" className="mt-2" /> : <Button type="submit" label="로그인" className="mt-2" />}</> */}
                 <Button type="submit" label="로그인" className="mt-2" />
               </form>
             )}
