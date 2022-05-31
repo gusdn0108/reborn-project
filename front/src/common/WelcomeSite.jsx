@@ -2,7 +2,7 @@ import React from 'react'
 import {Carousel} from 'react-bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import styled from 'styled-components'
-
+import './css/Slide.css'
 
 const textcolor = styled.div`
   color: black;

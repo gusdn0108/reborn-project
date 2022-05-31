@@ -35,5 +35,9 @@ export const StyledButton = styled.button`
     `
     }
 
+    a{
+        text-decoration-line: none;
+    }
+
     
 `

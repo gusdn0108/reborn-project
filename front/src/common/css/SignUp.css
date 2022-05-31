@@ -1,7 +1,7 @@
 .form-demo .card {
     min-width: 650px;
     height: 700px;
-    padding: 90px;
+    padding: 160px;
 
 }
 
@@ -26,6 +26,9 @@
     }
 }
 
+a{
+    text-decoration-line: none;
+}
 
 
 .p-button {
@@ -137,3 +140,76 @@
     font-weight: bold;
     margin-bottom: 50px;
 }
+
+#username {
+    background-color: rgb(255, 238, 241);
+    width: 500px;
+    height: 25px;
+    padding:14px;
+    border-radius: 7px;
+}
+
+#email {
+    background-color: rgb(255, 238, 241);
+    width: 500px;
+    height: 25px;
+    border-radius: 7px ;
+    padding:14px
+
+}
+
+.p-inputtext.p-component.p-password-input { 
+    background-color: rgb(255, 238, 241);
+    width: 500px;
+    height: 25px;
+    padding:14px;
+    border-radius:7px;
+}
+
+.pi-envelope:before{
+ margin: 476px;
+}
+
+.pi-eye:before{
+    margin: 476px;
+}
+
+.pi.pi-eye-slash::before{
+    margin: 476px;
+}
+
+.p-checkbox-icon .p-c .pi .pi-check{
+    height: 50px;
+    width: 50px;
+}
+
+.p-error{
+    margin: 25px ;
+
+}
+
+
+.form-demo .card {
+    min-width: 450px;
+}
+.form-demo .card form {
+    margin-top: 2rem;
+}
+.form-demo .card .field {
+    margin-bottom: 1.5rem;
+}
+@media screen and (max-width: 960px) {
+    .form-demo .card {
+        width: 80%;
+       
+    }
+}
+@media screen and (max-width: 640px) {
+    .form-demo .card {
+        width: 100%;
+        min-width: 0;
+        
+    }
+}
+
+

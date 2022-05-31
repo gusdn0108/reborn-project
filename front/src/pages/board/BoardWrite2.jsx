@@ -6,7 +6,7 @@ import { InputText } from "primereact/inputtext";
 import SunEditor from "suneditor-react";
 import "suneditor/dist/css/suneditor.min.css";
 // import { StyledButton } from "./BoardWrite";
-import "../../common/css/Board.css";
+
 import { MAIN_API } from "../../lib/axios";
 import { BOARD_WRITE } from "../../common/path";
 import { Link } from "react-router-dom";
