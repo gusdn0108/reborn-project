@@ -5,11 +5,12 @@ import styled from "styled-components";
 import { Link, useParams } from "react-router-dom";
 import { BOARD_VIEW } from "../../common/path";
 import { MAIN_API } from "../../lib/axios";
-import '../../common/css/atag.css'
+import "../../common/css/atag.css";
+import Comment from "./Comment";
 
 const ViewWrapper = styled.div`
   clear: both;
-  height: 20rem;
+  /* height: 20rem; 높이고정x */
   font: 600 12px/14px "Open Sans", sans-serif;
   width: 100%;
   color: #555;
@@ -38,27 +39,7 @@ const ViewWrapper = styled.div`
     margin-top: 23px;
     height: 26px;
   }
-  .commentviewrapper {
-    background-color: #fbfbfb;
-    border-top: 1px solid #e9e9e9;
-    border-bottom: 1px solid #e9e9e9;
-    padding: 12px 4px;
-    z-index: 500;
-    margin-top: 45px;
-  }
-  .comment-view {
-    display: flex;
-    margin: 8px;
-  }
-  .comm-person {
-    width: 100px;
-  }
-  .comm-content {
-    flex: 1;
-  }
-  .comm-date {
-    width: 80px;
-  }
+
   .first {
     display: flex;
   }
@@ -97,7 +78,6 @@ const ViewWrapper = styled.div`
     display: flex;
 
     align-items: center; //위아래정렬
-
   }
   .datebig {
     display: flex;
@@ -267,21 +247,7 @@ const BoardView = () => {
             <StyledButton>삭제</StyledButton>
           </Link>
         </div>
-        <div className="comment">
-          <StyledInput className="inputbox"></StyledInput>
-          <StyledButton className="commbtn">댓글달기</StyledButton>
-        </div>
-        <div className="commentviewrapper">
-          {comment.map((comment) => {
-            return (
-              <div className="comment-view">
-                <div className="comm-person">{comment.title}</div>
-                <div className="comm-content">{comment.content}</div>
-                <div className="comm-date">{comment.date}</div>
-              </div>
-            );
-          })}
-        </div>
+        <Comment></Comment>
         <div className="nextgroup">
           <div className="before">이전글 {posts.subject}</div>
           <div className="next">다음글 {posts.subject}</div>
