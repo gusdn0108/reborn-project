@@ -23,7 +23,7 @@ function App() {
             <Route path="/signup" element={<Signup />} />
             <Route path="/write" element={<BoardWrite2 />} />
             <Route path="/board/update/:id" element={<BoardUpdate />} />
-            <Route path="/board/view" element={<BoardView />} />
+            <Route path="/board/view/:id" element={<BoardView />} />
             <Route path="/board/list" element={<BoardList />} />
           </Routes>
         </Container>
@@ -34,3 +34,4 @@ function App() {
 }
 
 export default App;
+
