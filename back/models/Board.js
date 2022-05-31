@@ -12,9 +12,12 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.INTEGER,
             allowNull: false,
             // autoIncrement: true
-
-        }, 
-
+        },
+        username: {
+            type: DataTypes.STRING,
+            allowNull: true,
+            // autoIncrement: true
+        },
     }, {
         timestamps: true,
         tableName: 'Board',
@@ -22,8 +25,8 @@ module.exports = (sequelize, DataTypes) => {
         collate: 'utf8mb4_general_ci',
         freezeTableName: true,
     })
-  
-  
+
+
 
 
 

@@ -6,7 +6,7 @@ import { InputText } from "primereact/inputtext";
 import SunEditor from "suneditor-react";
 import "suneditor/dist/css/suneditor.min.css";
 // import { StyledButton } from "./BoardWrite";
-import "../../common/css/Board.css";
+
 import { MAIN_API } from "../../lib/axios";
 import { BOARD_WRITE } from "../../common/path";
 import { Link } from "react-router-dom";
@@ -125,6 +125,7 @@ export const StyledButton = styled.button`
   & + & {
     margin-left: 1rem;
   }
+
 `;
 
 const BoardWrite2 = () => {
@@ -152,7 +153,7 @@ const BoardWrite2 = () => {
       <Writerapper>
         <form onSubmit={submitHandler}>
           <div className="full">
-            <div className="title">실내 자유 게시판 글쓰기</div>
+            <div className="title">자유 게시판 글쓰기</div>
 
             <div className="subject-box">
               <InputText
@@ -163,6 +164,19 @@ const BoardWrite2 = () => {
                   setWriteState({
                     ...writeState,
                     subject: e.target.value,
+                  });
+                }}
+              ></InputText>
+            </div>
+            <div className="subject-box">
+              <InputText
+                className="username"
+                placeholder="작성자"
+                required={true}
+                onChange={(e) => {
+                  setWriteState({
+                    ...writeState,
+                    username: e.target.value,
                   });
                 }}
               ></InputText>

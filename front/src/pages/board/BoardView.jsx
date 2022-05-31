@@ -5,6 +5,7 @@ import styled from "styled-components";
 import { Link, useParams } from "react-router-dom";
 import { BOARD_VIEW } from "../../common/path";
 import { MAIN_API } from "../../lib/axios";
+import '../../common/css/atag.css'
 
 const ViewWrapper = styled.div`
   clear: both;
@@ -94,7 +95,9 @@ const ViewWrapper = styled.div`
     flex: 1;
     border-top: 1px solid #e3e3e3;
     display: flex;
+
     align-items: center; //위아래정렬
+
   }
   .datebig {
     display: flex;
@@ -251,7 +254,7 @@ const BoardView = () => {
 
         <div className="button">
           <Link to="/board/list">
-            <StyledButton>목록</StyledButton>
+            <StyledButton to="/board/list">목록</StyledButton>
           </Link>
         </div>
         <div className="updatebutton">
