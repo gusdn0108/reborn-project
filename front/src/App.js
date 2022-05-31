@@ -1,28 +1,35 @@
 import React from "react";
-import { Routes, Route } from "react-router-dom";
+import {BrowserRouter as Router, Link, Routes, Route} from 'react-router-dom'
+import Container from "./common/Container";
+import Footer from "./common/Footer";
+import Header from "./common/Header";
 import Login from "./pages/auth/Login";
 import Signup from "./pages/auth/SignUp";
+import BoardList from "./pages/board/Boardlist";
 import BoardUpdate from "./pages/board/BoardUpdate";
 import BoardView from "./pages/board/BoardView";
 import BoardWrite2 from "./pages/board/BoardWrite2";
-import BoardList from "./pages/board/Boardlist";
-import Main from "./pages";
-
-
+import Main from "./pages/Main";
 
 function App() {
   return (
-    <Routes>
-      <Route path="/" element={<Main />} />
-      <Route path="/login" element={<Login />} />
-      <Route path="/signup" element={<Signup />} />
-
-      <Route path="/board/write" element={<BoardWrite2 />} />
-      <Route path="/board/update/:id" element={<BoardUpdate />} />
-      <Route path="/board/view" element={<BoardView />} />
-      <Route path="/board/list" element={<BoardList />} />
-      {/* <Route path="/board/update" element={<BoardUpdate />} /> */}
-    </Routes>
+    <>
+    
+      <Header />
+        <Container>
+          <Routes>
+            <Route path="/" element={<Main />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/signup" element={<Signup />} />
+            <Route path="/write" element={<BoardWrite2 />} />
+            <Route path="/board/update/:id" element={<BoardUpdate />} />
+            <Route path="/board/view" element={<BoardView />} />
+            <Route path="/board/list" element={<BoardList />} />
+          </Routes>
+        </Container>
+       
+      <Footer>Copyright All right &copy; reserved</Footer>
+    </>
   );
 }
 
