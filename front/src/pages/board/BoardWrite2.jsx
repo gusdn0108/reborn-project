@@ -123,6 +123,7 @@ export const StyledButton = styled.button`
   & + & {
     margin-left: 1rem;
   }
+
 `;
 
 const BoardWrite2 = () => {
