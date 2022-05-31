@@ -126,13 +126,30 @@ router.post('/delete/:id', async (req, res) => {
     }
 })
 
+router.post("/view/:id", async (req, res) => {
+  try {
+    // id 몇번째 게시판의 글을 불러올것인지
+    const { id } = req.params;
+    const view = await Board.findOne({
+      where: {
+        id: {
+          [Op.eq]: id,
+        },
+      },
+    });
 
-router.post("/view/:id", (req, res) => {
-  // id 몇번째 게시판의 글을 불러올것인지
+    res.json({
+      status: true,
+      result: view,
+      msg: "몇번째 게시글입니다.",
+    });
+  } catch (e) {
+    console.log(e);
+    res.status(500).json({
+      status: false,
+      result: null,
+      msg: "예상치 못한 오류가 발생되었습니다.",
+    });
+  }
 });
-
-// route.use('/comment',Comment)
-// '/api/board/comment/
-// create , list ,delete , update '
-
 module.exports = router;
