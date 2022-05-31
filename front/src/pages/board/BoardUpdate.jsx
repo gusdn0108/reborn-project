@@ -142,13 +142,13 @@ import SunEditor from "suneditor-react";
 import "suneditor/dist/css/suneditor.min.css";
 // import { StyledButton } from "./BoardWrite";
 import "../../common/css/Board.css";
-
+import { Link } from "react-router-dom";
 import { MAIN_API } from "../../lib/axios";
 import { BOARD_UPDATE } from "../../common/path";
 import { useParams } from "react-router-dom";
 
 const Container = styled.div`
-  max-width: 800px;
+  max-width: 900px;
   min-height: 80vh;
   background-color: #fff;
   padding: 16px;
@@ -222,15 +222,25 @@ const Writerapper = styled.div`
     border-bottom: 1px solid #e3e3e3;
   }
   .btn-group {
+    /* display: inline-block; */
     display: flex;
   }
   .btn {
     display: flex;
+    margin-top: -2px;
   }
   .btn-two {
+    /* display: flex; */
+    /* justify-content: end; */
+    /* flex: 1; */
+    height: 31px;
     display: flex;
-    justify-content: end;
-    flex: 1;
+    margin-top: 2px;
+    justify-content: space-between;
+  }
+  .btn-three {
+    display: flex;
+    margin-left: 11px;
   }
 `;
 export const StyledButton = styled.button`
@@ -238,7 +248,7 @@ export const StyledButton = styled.button`
   display: inline-flex;
   outline: none;
   border: #555 1px solid;
-  border-radius: 2px;
+  border-radius: 10px;
   color: white;
   font-weight: bold;
   cursor: pointer;
@@ -363,18 +373,25 @@ const BoardUpdate = () => {
             </div>
 
             <div className="potoplus">
-              <div className="potoname">사진첨부</div>
-              <div className="potourl">사진은 좀 나중에</div>
+              <div className="potoname"></div>
+              <div className="potourl"></div>
             </div>
 
             <div className="btn-group">
               <div className="btn">
-                <StyledButton>목록</StyledButton>
+                <Link to="/board/list">
+                  <StyledButton>목록</StyledButton>
+                </Link>
               </div>
               <div className="btn-two">
-                <StyledButton>취소</StyledButton>
-                <StyledButton type="submit">등록</StyledButton>
-                {/* <button type="submit">등록</button> */}
+                <Link to="/board/list">
+                  <StyledButton>취소</StyledButton>
+                </Link>
+                <div className="btn-three">
+                  <Link to="/board/view">
+                    <StyledButton type="submit">등록</StyledButton>
+                  </Link>
+                </div>
               </div>
             </div>
           </div>

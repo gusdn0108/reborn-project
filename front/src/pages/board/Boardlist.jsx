@@ -17,8 +17,10 @@ const ListWrapper = styled.div`
     width: 100%;
     margin-bottom: 20px;
   }
+
   .bigcard {
     background: #fff;
+    /* background-color: red; */
     font: 545 11px/13px "Open Sans", sans-serif;
     width: 100%;
     height: 100%;
@@ -134,17 +136,23 @@ const ListWrapper = styled.div`
     height: 40px;
     font-size: 12px;
   }
+  .inputbox {
+    margin-right: 5px;
+  }
 `;
 const Container = styled.div`
-  max-width: 800px;
+  max-width: 900px;
   min-height: 80vh;
   background-color: #fff;
   padding: 16px;
   margin: 20px auto;
+
+  /* background-color: red; */
 `;
 
 const StyledInput = styled.input`
-  height: 23px;
+  height: 28px;
+  width: 20%;
   margin-right: 20px;
 `;
 
@@ -164,7 +172,7 @@ const BoardList = () => {
   return (
     <Container>
       <ListWrapper>
-        <div className="card">
+        <div className="cardcard">
           <h2 className="title">실내 장소 추천</h2>
           <div className="table">
             <DataTable
@@ -194,10 +202,10 @@ const BoardList = () => {
           <div className="search">
             <select className="click">
               <option>전체</option>
-              <option>한달</option>
-              <option>일주일</option>
+              <option>제목</option>
+              <option>내용</option>
             </select>
-            <StyledInput></StyledInput>
+            <StyledInput className="inputbox"></StyledInput>
             <StyledButton>검색</StyledButton>
           </div>
 

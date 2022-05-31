@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from "react";
-
 import parser from "html-react-parser";
-
 import { StyledButton } from "./BoardWrite2";
 import styled from "styled-components";
 import { Link, useParams } from "react-router-dom";
@@ -13,8 +11,8 @@ const ViewWrapper = styled.div`
   height: 20rem;
   font: 600 12px/14px "Open Sans", sans-serif;
   width: 100%;
-  background: white;
   color: #555;
+  margin-top: -30px;
 
   .title {
     font-size: 30px;
@@ -25,17 +23,27 @@ const ViewWrapper = styled.div`
   }
   .comment {
     margin-bottom: 16px;
+
+    height: 27px;
     display: flex;
   }
   .inputbox {
-    width: 50%;
+    width: 80%;
     margin-right: 11px;
+    margin-top: 25px;
+  }
+
+  .commbtn {
+    margin-top: 23px;
+    height: 26px;
   }
   .commentviewrapper {
     background-color: #fbfbfb;
     border-top: 1px solid #e9e9e9;
     border-bottom: 1px solid #e9e9e9;
-    padding: 12px 3px;
+    padding: 12px 4px;
+    z-index: 500;
+    margin-top: 45px;
   }
   .comment-view {
     display: flex;
@@ -48,13 +56,8 @@ const ViewWrapper = styled.div`
     flex: 1;
   }
   .comm-date {
-    display: flex;
-    width: 550px;
-    justify-content: end;
-  }
-  /* .comm-date {
     width: 80px;
-  } */
+  }
   .first {
     display: flex;
   }
@@ -62,7 +65,6 @@ const ViewWrapper = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-
     height: 47px;
     width: 140px;
     border-top: 1px solid #e3e3e3;
@@ -71,9 +73,8 @@ const ViewWrapper = styled.div`
     height: 47px;
     border-top: 1px solid #e3e3e3;
     flex: 1;
-
     display: flex;
-    justify-content: center;
+    justify-content: baseline;
     align-items: center;
   }
   .second {
@@ -83,7 +84,6 @@ const ViewWrapper = styled.div`
     height: 47px;
     width: 140px;
     border-top: 1px solid #e3e3e3;
-
     display: flex;
     justify-content: center;
     align-items: center;
@@ -91,13 +91,9 @@ const ViewWrapper = styled.div`
   .sec-que {
     height: 47px;
     /* width: 100px; 넓이 필요없음 */
-
     flex: 1;
     border-top: 1px solid #e3e3e3;
     display: flex;
-
-    /* justify-content: center; 
-    align-items: center; */
     align-items: center; //위아래정렬
   }
   .datebig {
@@ -107,7 +103,6 @@ const ViewWrapper = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-
     height: 47px;
     width: 140px;
     border-top: 1px solid #e3e3e3;
@@ -116,9 +111,8 @@ const ViewWrapper = styled.div`
     height: 47px;
     border-top: 1px solid #e3e3e3;
     flex: 1;
-
     display: flex;
-    justify-content: center;
+    justify-content: baseline;
     align-items: center;
   }
   .count {
@@ -141,12 +135,13 @@ const ViewWrapper = styled.div`
     height: 300px;
     width: 100%;
     border-top: 1px solid #e3e3e3;
+    padding-top: 23px;
+    padding-left: 10px;
   }
   .before {
     height: 40px;
     width: 100%;
     border-top: 1px solid #e3e3e3;
-
     display: flex;
     align-items: center;
   }
@@ -159,9 +154,25 @@ const ViewWrapper = styled.div`
     align-items: center;
   }
   .button {
-    display: flex;
-    justify-content: flex-end;
+    display: inline-block;
+    margin: 0 5px;
+    float: right;
   }
+
+  .updatebutton {
+    display: inline-block;
+    margin-right: 5px;
+
+    /* justify-content: flex-end; */
+    /* position: relative; */
+  }
+  .delebutton {
+    display: inline-block;
+    margin-left: 2px;
+    /* justify-content: flex-end; */
+    /* position: absolute; */
+  }
+
   .nextgroup {
     /* padding: 16px; */
     width: 100%;
@@ -170,7 +181,7 @@ const ViewWrapper = styled.div`
   }
 `;
 const Container = styled.div`
-  max-width: 800px;
+  max-width: 900px;
   min-height: 80vh;
   background-color: #fff;
   padding: 16px;
@@ -182,6 +193,18 @@ const StyledInput = styled.input`
 `;
 
 const comment_data = [
+  { title: "test1", content: "test1 콘텐트입니다", date: "2022-05-28" },
+  { title: "test2", content: "test2 콘텐트입니다", date: "2022-05-29" },
+  { title: "test3", content: "test3 콘텐트입니다", date: "2022-05-30" },
+  { title: "test1", content: "test1 콘텐트입니다", date: "2022-05-28" },
+  { title: "test2", content: "test2 콘텐트입니다", date: "2022-05-29" },
+  { title: "test3", content: "test3 콘텐트입니다", date: "2022-05-30" },
+  { title: "test1", content: "test1 콘텐트입니다", date: "2022-05-28" },
+  { title: "test2", content: "test2 콘텐트입니다", date: "2022-05-29" },
+  { title: "test3", content: "test3 콘텐트입니다", date: "2022-05-30" },
+  { title: "test1", content: "test1 콘텐트입니다", date: "2022-05-28" },
+  { title: "test2", content: "test2 콘텐트입니다", date: "2022-05-29" },
+  { title: "test3", content: "test3 콘텐트입니다", date: "2022-05-30" },
   { title: "test1", content: "test1 콘텐트입니다", date: "2022-05-28" },
   { title: "test2", content: "test2 콘텐트입니다", date: "2022-05-29" },
   { title: "test3", content: "test3 콘텐트입니다", date: "2022-05-30" },
@@ -208,15 +231,15 @@ const BoardView = () => {
     <Container>
       <ViewWrapper>
         <div className="first">
-          <div className="subname">subject</div>
+          <div className="subname">제목</div>
           <div className="subquest">{posts.subject}</div>
         </div>
         <div className="second">
-          <div className="sec-name">name</div>
+          <div className="sec-name">작성자</div>
           <div className="sec-que">{posts.username}</div>
         </div>
         <div className="datebig">
-          <div className="datename">date</div>
+          <div className="datename">날짜</div>
           <div className="date">{posts.createdAt}</div>
           <div className="count">hit</div>
           <div className="countnum">{posts.hit}</div>
@@ -231,16 +254,26 @@ const BoardView = () => {
             <StyledButton>목록</StyledButton>
           </Link>
         </div>
+        <div className="updatebutton">
+          <Link to="/board/update:id">
+            <StyledButton>수정</StyledButton>
+          </Link>
+        </div>
+        <div className="delebutton">
+          <Link to="/board/list">
+            <StyledButton>삭제</StyledButton>
+          </Link>
+        </div>
         <div className="comment">
           <StyledInput className="inputbox"></StyledInput>
-          <StyledButton>댓글달기</StyledButton>
+          <StyledButton className="commbtn">댓글달기</StyledButton>
         </div>
         <div className="commentviewrapper">
           {comment.map((comment) => {
             return (
               <div className="comment-view">
                 <div className="comm-person">{comment.title}</div>
-                <div className="comm-cotent">{comment.content}</div>
+                <div className="comm-content">{comment.content}</div>
                 <div className="comm-date">{comment.date}</div>
               </div>
             );
