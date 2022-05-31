@@ -7,6 +7,7 @@ import {DataTable} from 'primereact/datatable'
 import { Column } from "primereact/column";
 import { MAIN_API } from "../../lib/axios";
 import { BOARD_LIST } from "../../common/path";
+import { useSelector } from "react-redux";
 const ListWrapper = styled.div`
   .table {
     border-top: 1px solid #eee;
@@ -95,9 +96,16 @@ const StyledInput = styled.input`
 const BoardList = () => {
   const [posts, setPosts] = useState([])
   const [isLoadding, setIsLoadding] = useState(false)
- useEffect(() => {
+  const auth = useSelector((state) => {
+    return state.user.me.username
+  })
+
+
+
+ useEffect(() => { 
   MAIN_API(setIsLoadding,BOARD_LIST,(res)=>{
     setPosts(res.data.list)
+
   },)   
  
    return () => {
@@ -105,87 +113,62 @@ const BoardList = () => {
    }
  }, [])
 
-  
+ const init = ()=>{
+   return posts.map((v,k)=>{
+    return (
+      <td key={k}>
+					<li>  {auth}</li>
+          <li>  {v.subject}</li>
+					<li> {v.content}</li>
+				</td>
+    )
+   })
+ }
+
+
 
   return (
     <Container>
       <ListWrapper>
-          <DataTable value={posts} emptyMessage="게시글이 없으니 먹이를주세용 ^_^"
+          {/* <DataTable value={posts} emptyMessage="게시글이 없으니 먹이를주세용 ^_^"
            paginator responsiveLayout="scroll"
            paginatorTemplate="CurrentPageReport FirstPageLink PrevPageLink PageLinks NextPageLink LastPageLink RowsPerPageDropdown"
            currentPageReportTemplate="Showing {first} to {last} of {totalRecords}" rows={10} rowsPerPageOptions={[10,20,50]}>
               <Column field="id" header="글번호"/>
               <Column field="subject" header="제목"/>
-              <Column field="userid" header="작성자"/>
+              <Column  field="username" header="작성자"></Column>
               <Column field="updatedAt" header="날짜"/>
-          </DataTable>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        {/* <div className="card">
+          </DataTable> */}
+         <div className="card">
           <h2 className="title">실내 장소 추천</h2>
 
-          <table className="table">
-            <thead>
-              <tr>
-                <th className="w-50">idx</th>
+          <table className="table" value={posts}>
+            {/* <thead>
+              <tr> */}
+                {/* <th className="w-50">idx</th>
                 <th>제목</th>
                 <th>이름</th>
                 <th>날짜</th>
-                <th>조회수</th>
-              </tr>
+                <th>조회수</th> */}
+              {/* </tr>
             </thead>
             <tbody>
-              <tr>
-                <td>1</td>
+              <tr> */}
+                {/* <td>1</td>
                 <td>경치 이쁜 곳</td>
                 <td>장미</td>
                 <td>22-05-25</td>
-                <td>1</td>
-              </tr>
-              <tr>
-                <td>2</td>
+                <td>1</td> */}
+              {/* </tr>
+              <tr> */}
+                {/* <td>2</td>
                 <td>여기가</td>
                 <td>데이지</td>
                 <td>22-05-26</td>
-                <td>1</td>
-              </tr>
-            </tbody>
+                <td>1</td> */}
+              {/* </tr>
+            </tbody> */}
+            <li>{init()}</li>
           </table>
         </div>
         <div className="button-group">
@@ -216,7 +199,7 @@ const BoardList = () => {
           </select>
           <StyledInput></StyledInput>
           <StyledButton>검색</StyledButton>
-        </div> */}
+        </div> 
       </ListWrapper>
     </Container>
   );

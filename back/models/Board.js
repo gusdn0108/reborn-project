@@ -13,7 +13,8 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.INTEGER,
             allowNull: false,
             // autoIncrement: true
-        },
+        }, 
+        
     }, {
         timestamps: true,
         tableName: 'Board',
@@ -21,9 +22,14 @@ module.exports = (sequelize, DataTypes) => {
         collate: 'utf8mb4_general_ci',
         freezeTableName: true,
     })
+  
+  
+
+
 
     return Board
 }
+
 
 // 문자열 타입에 대한 정의인데 utf8mb4로 정한다.
 //  가장 큰 이유는 실무를 예로 들면 Emoji 타입을

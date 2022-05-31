@@ -9,6 +9,8 @@ const sequelize = new Sequelize(config.database, config.username, config.passwor
 const Auth = require('./Auth')(sequelize,DataTypes)
 const Board = require('./Board')(sequelize,DataTypes)
 
+Auth.hasMany(Board)
+Board.belongsTo(Auth)
 
 
 
