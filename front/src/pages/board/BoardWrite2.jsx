@@ -10,9 +10,10 @@ import "suneditor/dist/css/suneditor.min.css";
 import { MAIN_API } from "../../lib/axios";
 import { BOARD_WRITE } from "../../common/path";
 import { Link } from "react-router-dom";
+import "./asdf.css";
 
 const Container = styled.div`
-  max-width: 800px;
+  max-width: 900px;
   min-height: 80vh;
   background-color: #fff;
   padding: 16px;
@@ -109,6 +110,7 @@ export const StyledButton = styled.button`
   /* border-color: grey; */
   /* 크기 */
   padding: 4px 10px;
+  border-radius: 10px;
   font-size: 12px;
   /* 색상 */
   background: #555;
@@ -239,7 +241,10 @@ const BoardWrite2 = () => {
                 <Link to="/board/list">
                   <StyledButton>취소</StyledButton>
                 </Link>
-                <StyledButton type="submit">등록</StyledButton>
+
+                <StyledButton type="submit" id="why">
+                  등록
+                </StyledButton>
 
                 {/* <button type="submit">등록</button> */}
               </div>

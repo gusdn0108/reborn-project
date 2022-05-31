@@ -1,7 +1,8 @@
-import styled from 'styled-components'
-import Responsive from './Responsive'
+import styled from "styled-components";
+import Responsive from "./Responsive";
 
 const FooterTemplate = styled.div`
+
     clear: both;
     height:5rem;
     width:100%;
@@ -9,14 +10,13 @@ const FooterTemplate = styled.div`
     color:#fff;
 `
 
-const Footer = ({children}) => {
-    return (
-        <FooterTemplate>
-            <Responsive>
-                {children}
-            </Responsive>
-        </FooterTemplate>
-    )
-}
 
-export default Footer
+const Footer = ({ children }) => {
+  return (
+    <FooterTemplate>
+      <Responsive>{children}</Responsive>
+    </FooterTemplate>
+  );
+};
+
+export default Footer;
