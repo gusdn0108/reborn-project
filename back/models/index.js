@@ -11,6 +11,8 @@ const Auth = require('./Auth')(sequelize, DataTypes)
 const Board = require('./Board')(sequelize, DataTypes)
 const Comment = require('./Comment')(sequelize, DataTypes)
 
+Auth.hasMany(Board)
+Board.belongsTo(Auth)
 
 
 

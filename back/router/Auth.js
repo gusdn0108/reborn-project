@@ -32,7 +32,7 @@ router.post('/signup', (req, res) => {
         res.status(500).json({
             status: false,
             result: null,
-            msg: '예상치 못한 오류가 발생되었습니다. -ㅅ-',
+            msg: '예상치 못한 오류가 발생되었습니다. -ㅅ-! ',
         })
     }
 })
@@ -71,6 +71,7 @@ router.post('/signin', async (req, res) => {
                     userData: _user.dataValues,
                     token: token
                 })
+                console.log(token)
             } else {
                 res.json({
                     status: false,

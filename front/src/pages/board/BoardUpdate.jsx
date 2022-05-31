@@ -310,7 +310,7 @@ const BoardUpdate = () => {
               style={{ height: "320px" }}
               value={text}
               onTextChange={(e) => setText(e.htmlValue)}
-<<<<<<< HEAD
+
             />
           </div>
           <div className="potoplus">
@@ -320,7 +320,7 @@ const BoardUpdate = () => {
           <div className="btn-group">
             <div className="btn">
               <StyledButton>목록</StyledButton>
-=======
+
             /> */}
               <SunEditor
                 onChange={(html) => {
