@@ -8,8 +8,6 @@ import BoardWrite2 from "./pages/board/BoardWrite2";
 import BoardList from "./pages/board/Boardlist";
 import Main from "./pages";
 
-
-
 function App() {
   return (
     <Routes>
@@ -19,7 +17,7 @@ function App() {
 
       <Route path="/board/write" element={<BoardWrite2 />} />
       <Route path="/board/update/:id" element={<BoardUpdate />} />
-      <Route path="/board/view" element={<BoardView />} />
+      <Route path="/board/view/:id" element={<BoardView />} />
       <Route path="/board/list" element={<BoardList />} />
       {/* <Route path="/board/update" element={<BoardUpdate />} /> */}
     </Routes>

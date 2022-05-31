@@ -1,10 +1,12 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
-import parser from "html-react-parser"
+import parser from "html-react-parser";
 
 import { StyledButton } from "./BoardWrite2";
 import styled from "styled-components";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
+import { BOARD_VIEW } from "../../common/path";
+import { MAIN_API } from "../../lib/axios";
 
 const ViewWrapper = styled.div`
   clear: both;
@@ -57,10 +59,9 @@ const ViewWrapper = styled.div`
     display: flex;
   }
   .subname {
-
-    display: flex; 
-    justify-content: center; 
-    align-items: center; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
     height: 47px;
     width: 140px;
@@ -71,10 +72,9 @@ const ViewWrapper = styled.div`
     border-top: 1px solid #e3e3e3;
     flex: 1;
 
-    display: flex; 
-    justify-content: center; 
-    align-items: center; 
-
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
   .second {
     display: flex;
@@ -84,18 +84,17 @@ const ViewWrapper = styled.div`
     width: 140px;
     border-top: 1px solid #e3e3e3;
 
-    display: flex; 
-    justify-content: center; 
-    align-items: center; 
-
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
   .sec-que {
     height: 47px;
     /* width: 100px; 넓이 필요없음 */
 
-    flex: 1; 
+    flex: 1;
     border-top: 1px solid #e3e3e3;
-    display: flex; 
+    display: flex;
 
     /* justify-content: center; 
     align-items: center; */
@@ -105,10 +104,9 @@ const ViewWrapper = styled.div`
     display: flex;
   }
   .datename {
-
-    display: flex; 
-    justify-content: center; 
-    align-items: center; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
     height: 47px;
     width: 140px;
@@ -119,10 +117,9 @@ const ViewWrapper = styled.div`
     border-top: 1px solid #e3e3e3;
     flex: 1;
 
-    display: flex; 
-    justify-content: center; 
-    align-items: center; 
-
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
   .count {
     display: flex;
@@ -150,9 +147,8 @@ const ViewWrapper = styled.div`
     width: 100%;
     border-top: 1px solid #e3e3e3;
 
-    display: flex; 
-    align-items: center; 
-
+    display: flex;
+    align-items: center;
   }
   .next {
     height: 40px;
@@ -194,43 +190,44 @@ const comment_data = [
 const BoardView = () => {
   const [text, setText] = useState("");
   const [comment, setComment] = useState(comment_data);
+  const [posts, setPosts] = useState([]);
+  const [isLoadding, setIsLoadding] = useState(false);
+  const { id } = useParams();
+  useEffect(() => {
+    MAIN_API(setIsLoadding, BOARD_VIEW + id, (res) => {
+      setPosts(res.data.result);
+    });
+
+    return () => {
+      setPosts([]);
+    };
+  }, []);
+  console.log(posts);
 
   return (
     <Container>
       <ViewWrapper>
         <div className="first">
           <div className="subname">subject</div>
-          <div className="subquest">[자주하는 Q&A] 경치좋은곳</div>
+          <div className="subquest">{posts.subject}</div>
         </div>
         <div className="second">
           <div className="sec-name">name</div>
-          <div className="sec-que">bullang Girls</div>
+          <div className="sec-que">{posts.username}</div>
         </div>
         <div className="datebig">
           <div className="datename">date</div>
-          <div className="date">2022-05-26</div>
+          <div className="date">{posts.createdAt}</div>
           <div className="count">hit</div>
-          <div className="countnum">8175</div>
+          <div className="countnum">{posts.hit}</div>
         </div>
 
-        <div className="content">
-
-          {parser(`     <p>
-            글 내용 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-            do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-            enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi
-            ut aliquip ex ea commodo nsequat. Duis aute irure dolor in
-            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-            pariatur. Excepteur sint occaecat cupidatat non proident, suntn
-            culpa qui officia deserunt mollit anim id est laborum.
-          </p>`)}
-
-        </div>
+        <div className="content">{parser(posts.content || "")}</div>
 
         <hr className="line" />
 
         <div className="button">
-          <Link to="/list">
+          <Link to="/board/list">
             <StyledButton>목록</StyledButton>
           </Link>
         </div>
@@ -250,8 +247,8 @@ const BoardView = () => {
           })}
         </div>
         <div className="nextgroup">
-          <div className="before">이전글</div>
-          <div className="next">다음글</div>
+          <div className="before">이전글 {posts.subject}</div>
+          <div className="next">다음글 {posts.subject}</div>
         </div>
       </ViewWrapper>
     </Container>
