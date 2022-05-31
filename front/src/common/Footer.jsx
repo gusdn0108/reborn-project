@@ -5,7 +5,7 @@ const FooterTemplate = styled.div`
     clear: both;
     height:5rem;
     width:100%;
-    background:#333;
+    background:pink;
     color:#fff;
 `
 

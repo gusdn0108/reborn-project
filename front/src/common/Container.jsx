@@ -12,12 +12,18 @@ const Template = styled.div`
     }
 `
 
+
+
+
 const Container = ({children}) => {
     return (
+       
         <Template>
             {children}
         </Template>
     )
 }
+
+
 
 export default Container
