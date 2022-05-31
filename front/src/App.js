@@ -11,6 +11,7 @@ import BoardView from "./pages/board/BoardView";
 import BoardWrite2 from "./pages/board/BoardWrite2";
 import Main from "./pages/Main";
 
+
 function App() {
   return (
     <>

@@ -15,12 +15,12 @@ export const StyledButton = styled.button`
     padding-right: 1rem;
     height: 2.25rem;
     font-size: 1rem;
-    background: #228be6;
+    background: pink;
     &:hover {
-        background: #339af0;
+        background: #ffa49c;
     }
     &:active {
-        background: #1c7ed6;
+        background: #ff93c9;
     }
 
     & + & {
