@@ -48,12 +48,33 @@ const CommentWrapper = styled.div`
   }
   .comm-person {
     width: 100px;
+    margin-left: 5px;
+    display: flex;
+    align-items: center;
   }
   .comm-content {
     flex: 1;
+    display: flex;
+    align-items: center;
   }
   .comm-date {
     width: 80px;
+    display: flex;
+    align-items: center;
+  }
+  .edit-input {
+    width: 60%;
+    margin-right: 44px;
+    margin-top: 2px;
+  }
+  .group-btn {
+    /* display: flex;
+    height: 9px; */
+  }
+  .edit-btn {
+    margin-left: 3px;
+  }
+  .delete-btn {
   }
 `;
 
@@ -117,16 +138,17 @@ const Comment = () => {
               <div className="comm-person">{comment.title}</div>
 
               {commentId === comment.id ? (
-                <input />
+                <input className="edit-input" />
               ) : (
                 <div className="comm-content">{comment.content}</div>
               )}
               <div className="comm-date">{comment.date}</div>
               <div className="comm-writebtn">
-                <StyledButton>x</StyledButton>
+                <StyledButton className="delete-btn">x</StyledButton>
               </div>
               <div className="comm-delebtn">
                 <StyledButton
+                  className="edit-btn"
                   onClick={() => {
                     setCommentId(comment.id);
                   }}

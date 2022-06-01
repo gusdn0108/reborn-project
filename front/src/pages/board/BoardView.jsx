@@ -145,19 +145,13 @@ const ViewWrapper = styled.div`
   .updatebutton {
     display: inline-block;
     margin-right: 5px;
-
-    /* justify-content: flex-end; */
-    /* position: relative; */
   }
   .delebutton {
     display: inline-block;
     margin-left: 2px;
-    /* justify-content: flex-end; */
-    /* position: absolute; */
   }
 
   .nextgroup {
-    /* padding: 16px; */
     width: 100%;
     margin: 15px 0;
     padding-bottom: 40px;
@@ -180,17 +174,6 @@ const comment_data = [
   { title: "test2", content: "test2 콘텐트입니다", date: "2022-05-29" },
   { title: "test3", content: "test3 콘텐트입니다", date: "2022-05-30" },
   { title: "test1", content: "test1 콘텐트입니다", date: "2022-05-28" },
-  { title: "test2", content: "test2 콘텐트입니다", date: "2022-05-29" },
-  { title: "test3", content: "test3 콘텐트입니다", date: "2022-05-30" },
-  { title: "test1", content: "test1 콘텐트입니다", date: "2022-05-28" },
-  { title: "test2", content: "test2 콘텐트입니다", date: "2022-05-29" },
-  { title: "test3", content: "test3 콘텐트입니다", date: "2022-05-30" },
-  { title: "test1", content: "test1 콘텐트입니다", date: "2022-05-28" },
-  { title: "test2", content: "test2 콘텐트입니다", date: "2022-05-29" },
-  { title: "test3", content: "test3 콘텐트입니다", date: "2022-05-30" },
-  { title: "test1", content: "test1 콘텐트입니다", date: "2022-05-28" },
-  { title: "test2", content: "test2 콘텐트입니다", date: "2022-05-29" },
-  { title: "test3", content: "test3 콘텐트입니다", date: "2022-05-30" },
 ];
 
 const BoardView = () => {
