@@ -181,7 +181,7 @@ const BoardView = () => {
   const [posts, setPosts] = useState([]);
   const [isLoadding, setIsLoadding] = useState(false);
   const { id } = useParams();
- 
+
   useEffect(() => {
     MAIN_API(setIsLoadding, BOARD_VIEW + id, (res) => {
       setPosts(res.data.result);
@@ -203,18 +203,18 @@ const BoardView = () => {
   const dialogFooter = (
     <div className="flex justify-content-center">
       <Link to={deletePath}>
-      <Button  className="p-button-text" autoFocus >리스트로가기</Button>
+        <Button className="p-button-text" autoFocus >리스트로가기</Button>
       </Link>
     </div>
   );
- 
 
 
-  const deleteHandler =(e) =>{
+
+  const deleteHandler = (e) => {
     e.preventDefault()
-    MAIN_API(setIsLoadding,BOARD_DELETE + id,(res)=>{
+    MAIN_API(setIsLoadding, BOARD_DELETE + id, (res) => {
       setShowMessage(true)
-},)
+    })
 
   }
 
@@ -222,13 +222,13 @@ const BoardView = () => {
     <Container>
       <ViewWrapper>
 
-      <Dialog visible={showMessage} onHide={() => setShowMessage(false)} position="top" footer={dialogFooter} showHeader={false} breakpoints={{ '960px': '80vw' }} style={{ width: '30vw' }}>
-        <div id="loginalert"className="flex align-items-center flex-column pt-6 px-3">
-          <i className="pi pi-check-circle" style={{ fontSize: '10rem', color: 'var(--green-500)' }}></i>
-          <p style={{ lineHeight: 7, textIndent: '1rem', fontSize: 20 }}>
-            글삭제가 완료되었습니다 
-          </p>
-        </div>
+        <Dialog visible={showMessage} onHide={() => setShowMessage(false)} position="top" footer={dialogFooter} showHeader={false} breakpoints={{ '960px': '80vw' }} style={{ width: '30vw' }}>
+          <div id="loginalert" className="flex align-items-center flex-column pt-6 px-3">
+            <i className="pi pi-check-circle" style={{ fontSize: '10rem' }}></i>
+            <p style={{ lineHeight: 7, textIndent: '1rem', fontSize: 20 }}>
+              글삭제가 완료되었습니다
+            </p>
+          </div>
         </Dialog>
 
 
@@ -262,9 +262,9 @@ const BoardView = () => {
           </Link>
         </div>
         <div className="delebutton">
-          <form  onSubmit={deleteHandler}>
+          <form onSubmit={deleteHandler}>
             <StyledButton>삭제</StyledButton>
-            </form>
+          </form>
         </div>
         <Comment></Comment>
         <div className="nextgroup">

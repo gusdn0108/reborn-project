@@ -149,21 +149,21 @@ const BoardUpdate = () => {
   const [writeState, setWriteState] = useState({
     subject: "",
     content: "",
-    updatedAT:"",
+    updatedAT: "",
 
   });
 
   const [isLoadding, setIsLoadding] = useState(false);
   const [showMessage, setShowMessage] = useState(false);
 
-  const nextHandler = () =>{
+  const nextHandler = () => {
     setShowMessage(true)
   }
 
   const dialogFooter = (
     <div className="flex justify-content-center">
       <Link to={updatePath}>
-      <Button  className="p-button-text" autoFocus >글보러가기</Button>
+        <Button className="p-button-text" autoFocus >글보러가기</Button>
       </Link>
     </div>
   );
@@ -173,8 +173,8 @@ const BoardUpdate = () => {
   const submitHandler = (e) => {
     e.preventDefault();
     console.log(e);
-    MAIN_API(setIsLoadding,BOARD_UPDATE + id, (res)=>{
-    },writeState)
+    MAIN_API(setIsLoadding, BOARD_UPDATE + id, (res) => {
+    }, writeState)
   };
   return (
 
@@ -182,13 +182,13 @@ const BoardUpdate = () => {
       <Writerapper>
 
 
-      <Dialog visible={showMessage} onHide={() => setShowMessage(false)} position="top" footer={dialogFooter} showHeader={false} breakpoints={{ '960px': '80vw' }} style={{ width: '30vw' }}>
-        <div id="loginalert"className="flex align-items-center flex-column pt-6 px-3">
-          <i className="pi pi-check-circle" style={{ fontSize: '10rem', color: 'var(--green-500)' }}></i>
-          <p style={{ lineHeight: 7, textIndent: '1rem', fontSize: 20 }}>
-            글수정이 완료되었습니다
-          </p>
-        </div>
+        <Dialog visible={showMessage} onHide={() => setShowMessage(false)} position="top" footer={dialogFooter} showHeader={false} breakpoints={{ '960px': '80vw' }} style={{ width: '30vw' }}>
+          <div id="loginalert" className="flex align-items-center flex-column pt-6 px-3">
+            <i className="pi pi-check-circle" style={{ fontSize: '10rem' }}></i>
+            <p style={{ lineHeight: 7, textIndent: '1rem', fontSize: 20 }}>
+              글수정이 완료되었습니다
+            </p>
+          </div>
         </Dialog>
 
         <form onSubmit={submitHandler}>
@@ -237,7 +237,7 @@ const BoardUpdate = () => {
                     "/",
                     ["outdent", "indent"],
                     ["align", "horizontalRule", "list", "lineHeight"],
-                    ["table", "link", "image", "video", "audio"], 
+                    ["table", "link", "image", "video", "audio"],
 
                     ["fullScreen", "showBlocks", "codeView"],
                     ["preview", "print"],
@@ -263,12 +263,12 @@ const BoardUpdate = () => {
                   <StyledButton>취소</StyledButton>
                 </Link>
                 <div className="btn-three">
-                  
 
-                  
-                    <StyledButton type="submit" onSubmit={submitHandler} onClick={nextHandler} >등록</StyledButton>
-                   
-                 
+
+
+                  <StyledButton type="submit" onSubmit={submitHandler} onClick={nextHandler} >등록</StyledButton>
+
+
                 </div>
               </div>
             </div>
@@ -277,6 +277,6 @@ const BoardUpdate = () => {
       </Writerapper>
     </Container>
   );
-};  
+};
 
 export default BoardUpdate;

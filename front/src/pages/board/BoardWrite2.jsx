@@ -137,12 +137,12 @@ const BoardWrite2 = () => {
   });
   const [isLoadding, setIsLoadding] = useState(false);
 
-  const listpath = '/board/list' 
+  const listpath = '/board/list'
   const [showMessage, setShowMessage] = useState(false);
   const dialogFooter = (
     <div className="flex justify-content-center">
       <Link to={listpath}>
-      <Button  className="p-button-text" autoFocus >글 확인하러가기</Button>
+        <Button className="p-button-text" autoFocus >글 확인하러가기</Button>
       </Link>
     </div>
   );
@@ -168,17 +168,17 @@ const BoardWrite2 = () => {
     <Container>
       <Writerapper>
 
-      <Dialog visible={showMessage} onHide={() => setShowMessage(false)} position="top" footer={dialogFooter} showHeader={false} breakpoints={{ '960px': '80vw' }} style={{ width: '30vw' }}>
-        <div id="loginalert"className="flex align-items-center flex-column pt-6 px-3">
-          <i className="pi pi-check-circle" style={{ fontSize: '10rem', color: 'var(--green-500)' }}></i>
-          <p style={{ lineHeight: 7, textIndent: '1rem', fontSize: 20 }}>
-            글작성이 완료되었습니다
-          </p>
-        </div>
+        <Dialog visible={showMessage} onHide={() => setShowMessage(false)} position="top" footer={dialogFooter} showHeader={false} breakpoints={{ '960px': '80vw' }} style={{ width: '30vw' }}>
+          <div id="loginalert" className="flex align-items-center flex-column pt-6 px-3">
+            <i className="pi pi-check-circle" style={{ fontSize: '10rem' }}></i>
+            <p style={{ lineHeight: 7, textIndent: '1rem', fontSize: 20 }}>
+              글작성이 완료되었습니다
+            </p>
+          </div>
         </Dialog>
 
 
-``
+        ``
         <form onSubmit={submitHandler}>
           <div className="full">
             <div className="title">자유 게시판 글쓰기</div>
