@@ -34,11 +34,13 @@ router.post("/write", async (req, res) => {
 
         // }
         const { subject, content, username } = req.body;
+        const {id} = req.params
         const data = req.body;
         await Board.create({
             subject: req.body.subject,
             content: req.body.content,
             username: req.body.username,
+        
             hit: 0,
         });
 

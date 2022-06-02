@@ -13,6 +13,7 @@ import { Link } from "react-router-dom";
 import "./asdf.css";
 import Button from "../../common/Button";
 import { Dialog } from "primereact/dialog";
+import { useParams } from "react-router-dom";
 
 const Container = styled.div`
   max-width: 900px;
@@ -137,11 +138,13 @@ const BoardWrite2 = () => {
   });
   const [isLoadding, setIsLoadding] = useState(false);
 
-  const listpath = '/board/list' 
+  const updatePath = '/board/list' 
+
+
   const [showMessage, setShowMessage] = useState(false);
   const dialogFooter = (
     <div className="flex justify-content-center">
-      <Link to={listpath}>
+      <Link to={updatePath}>
       <Button  className="p-button-text" autoFocus >글 확인하러가기</Button>
       </Link>
     </div>
@@ -156,7 +159,7 @@ const BoardWrite2 = () => {
     console.log(e);
     MAIN_API(
       setIsLoadding,
-      BOARD_WRITE,
+      "http://3.39.197.229/api/board/write",
       (res) => {
         setShowMessage(true)
       },

@@ -181,11 +181,14 @@ const BoardView = () => {
   const [posts, setPosts] = useState([]);
   const [isLoadding, setIsLoadding] = useState(false);
   const { id } = useParams();
- 
+  console.log(id)
+
+  const viewpath = "http://3.39.197.229/api/board/view/"
   useEffect(() => {
-    MAIN_API(setIsLoadding, BOARD_VIEW + id, (res) => {
+    MAIN_API(setIsLoadding, "http://3.39.197.229/api/board/view/" + updateIdx, (res) => {
+      
       setPosts(res.data.result);
-    });
+    },id);
 
     return () => {
       setPosts([]);
@@ -195,7 +198,6 @@ const BoardView = () => {
 
   // console.log(window.location.pathname)
   const updateIdx = window.location.pathname.split('/')[3]
-  console.log(updateIdx)
   const updatePath = '/board/update/' + updateIdx
   const deletePath = '/board/list'
 
@@ -212,7 +214,7 @@ const BoardView = () => {
 
   const deleteHandler =(e) =>{
     e.preventDefault()
-    MAIN_API(setIsLoadding,BOARD_DELETE + id,(res)=>{
+    MAIN_API(setIsLoadding, "http://3.39.197.229/api/board/delete/" + id,(res)=>{
       setShowMessage(true)
 },)
 
