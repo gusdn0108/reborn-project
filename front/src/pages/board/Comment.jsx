@@ -11,6 +11,8 @@ import {
 } from "../../common/path";
 import { MAIN_API } from "../../lib/axios";
 import "../../common/css/atag.css";
+import Button from "../../common/Button";
+import { Dialog } from "primereact/dialog";
 
 const CommentWrapper = styled.div`
   clear: both;
@@ -89,23 +91,41 @@ const StyledInput = styled.input`
 `;
 
 const comment_data = [
-  { id: 1, title: "test1", content: "test1 콘텐트입니다", date: "2022-05-28" },
-  { id: 2, title: "test2", content: "test2 콘텐트입니다", date: "2022-05-29" },
-  { id: 3, title: "test3", content: "test3 콘텐트입니다", date: "2022-05-30" },
+  
 ];
 
 const Comment = () => {
+  const { id } = useParams();
+
   const [text, setText] = useState("");
   const [updateText, setUpdateText] = useState("");
   const [comment, setComment] = useState(comment_data);
+  const [showMessage, setShowMessage] = useState(false);
 
-  const [isLoadding, setIsLoadding] = useState(false);
-  const { id } = useParams();
+  const close = ()=>{
+    setShowMessage(false)
+  }
+  const listpath = '/board/view/' + id 
+
+  const dialogFooter = (
+    <div className="flex justify-content-center">
+      <Link to={listpath}>
+      <Button  className="p-button-text" autoFocus onClick={close}>확인</Button>
+      </Link>
+    </div>
+  );
+
+
+
+  const [isLoadding, setIsLoadding] = useState(false);  
+ 
   const fetchData = () => {
     MAIN_API(setIsLoadding, COMMENT_LIST + id, (res) => {
       setComment(res.data.result || []); //데이터 달라는 요청 댓글 추가후 다시 실행시켜야함
     });
   };
+
+  
   useEffect(() => {
     fetchData(); //새로고침 안해도 바로 데이터가 넘어옴
   }, []);
@@ -120,8 +140,10 @@ const Comment = () => {
       (res) => {
         console.log(res);
         fetchData();
+     
+
       },
-      { comment: text, nickname: "test", boardId: id }
+      { comment: text,  boardId: id }
     );
   };
 
@@ -149,6 +171,16 @@ const Comment = () => {
 
   return (
     <CommentWrapper>
+      
+      <Dialog visible={showMessage} onHide={() => setShowMessage(false)} position="top" footer={dialogFooter} showHeader={false} breakpoints={{ '960px': '80vw' }} style={{ width: '30vw' }}>
+        <div id="loginalert"className="flex align-items-center flex-column pt-6 px-3">
+          <i className="pi pi-check-circle" style={{ fontSize: '10rem', color: 'var(--green-500)' }}></i>
+          <p style={{ lineHeight: 7, textIndent: '1rem', fontSize: 20 }}>
+           댓글이 작성되었습니다 
+          </p>
+        </div>
+        </Dialog>
+
       <div className="comment">
         <StyledInput
           className="inputbox"
@@ -157,9 +189,11 @@ const Comment = () => {
             setText(e.target.value);
           }}
         ></StyledInput>
-        <StyledButton className="commbtn" onClick={submitHandler}>
+        <form onSubmit={submitHandler}>
+        <StyledButton className="commbtn"  onClick={setShowMessage}>
           댓글달기
         </StyledButton>
+        </form>
       </div>
       <div className="commentviewrapper">
         {comment.map((comment) => {

@@ -13,6 +13,7 @@ export const BOARD_WRITE = `${board}/write`;
 export const BOARD_LIST = `${board}/list`;
 export const BOARD_UPDATE = `${board}/update/`;
 export const BOARD_VIEW = `${board}/view/`;
+export const BOARD_DELETE = `${board}/delete/`;
 
 // ------------------------------comment---------------------------------
 export const COMMENT_WRITE = `${comment}/write`;

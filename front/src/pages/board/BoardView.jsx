@@ -2,11 +2,13 @@ import React, { useEffect, useState } from "react";
 import parser from "html-react-parser";
 import { StyledButton } from "./BoardWrite2";
 import styled from "styled-components";
-import { Link, useParams } from "react-router-dom";
-import { BOARD_VIEW } from "../../common/path";
+import { Link, useParams, useLocation } from "react-router-dom";
+import { BOARD_DELETE, BOARD_VIEW } from "../../common/path";
 import { MAIN_API } from "../../lib/axios";
-import "../../common/css/atag.css";
+import '../../common/css/atag.css'
 import Comment from "./Comment";
+import Button from "../../common/Button";
+import { Dialog } from "primereact/dialog";
 
 const ViewWrapper = styled.div`
   clear: both;
@@ -169,19 +171,17 @@ const StyledInput = styled.input`
   margin-right: 20px;
 `;
 
-const comment_data = [
-  { title: "test1", content: "test1 콘텐트입니다", date: "2022-05-28" },
-  { title: "test2", content: "test2 콘텐트입니다", date: "2022-05-29" },
-  { title: "test3", content: "test3 콘텐트입니다", date: "2022-05-30" },
-  { title: "test1", content: "test1 콘텐트입니다", date: "2022-05-28" },
-];
+
 
 const BoardView = () => {
+
+
   const [text, setText] = useState("");
-  const [comment, setComment] = useState(comment_data);
+  const [comment, setComment] = useState();
   const [posts, setPosts] = useState([]);
   const [isLoadding, setIsLoadding] = useState(false);
   const { id } = useParams();
+ 
   useEffect(() => {
     MAIN_API(setIsLoadding, BOARD_VIEW + id, (res) => {
       setPosts(res.data.result);
@@ -191,11 +191,47 @@ const BoardView = () => {
       setPosts([]);
     };
   }, []);
-  console.log(posts);
+
+
+  // console.log(window.location.pathname)
+  const updateIdx = window.location.pathname.split('/')[3]
+  console.log(updateIdx)
+  const updatePath = '/board/update/' + updateIdx
+  const deletePath = '/board/list'
+
+  const [showMessage, setShowMessage] = useState(false);
+  const dialogFooter = (
+    <div className="flex justify-content-center">
+      <Link to={deletePath}>
+      <Button  className="p-button-text" autoFocus >리스트로가기</Button>
+      </Link>
+    </div>
+  );
+ 
+
+
+  const deleteHandler =(e) =>{
+    e.preventDefault()
+    MAIN_API(setIsLoadding,BOARD_DELETE + id,(res)=>{
+      setShowMessage(true)
+},)
+
+  }
 
   return (
     <Container>
       <ViewWrapper>
+
+      <Dialog visible={showMessage} onHide={() => setShowMessage(false)} position="top" footer={dialogFooter} showHeader={false} breakpoints={{ '960px': '80vw' }} style={{ width: '30vw' }}>
+        <div id="loginalert"className="flex align-items-center flex-column pt-6 px-3">
+          <i className="pi pi-check-circle" style={{ fontSize: '10rem', color: 'var(--green-500)' }}></i>
+          <p style={{ lineHeight: 7, textIndent: '1rem', fontSize: 20 }}>
+            글삭제가 완료되었습니다 
+          </p>
+        </div>
+        </Dialog>
+
+
         <div className="first">
           <div className="subname">제목</div>
           <div className="subquest">{posts.subject}</div>
@@ -221,14 +257,14 @@ const BoardView = () => {
           </Link>
         </div>
         <div className="updatebutton">
-          <Link to="/board/update:id">
+          <Link to={updatePath}>
             <StyledButton>수정</StyledButton>
           </Link>
         </div>
         <div className="delebutton">
-          <Link to="/board/list">
+          <form  onSubmit={deleteHandler}>
             <StyledButton>삭제</StyledButton>
-          </Link>
+            </form>
         </div>
         <Comment></Comment>
         <div className="nextgroup">

@@ -13,11 +13,7 @@ module.exports = (sequelize, DataTypes) => {
             allowNull: false,
             // autoIncrement: true
         },
-        username: {
-            type: DataTypes.STRING,
-            allowNull: true,
-            // autoIncrement: true
-        },
+
     }, {
         timestamps: true,
         tableName: 'Board',
