@@ -10,13 +10,13 @@ const router = express.Router();
 router.post("/write", async (req, res) => {
   try {
     console.log(req.body);
-    const { comment } = req.body;
+    const { comment, boardId } = req.body;
+    console.log(comment);
     const data = req.body;
 
     await Comment.create({
-      // username: req.body.username,
-      comment: req.body.comment,
-      nickname: req.body.nickname,
+      comment,
+      boardId,
     });
     res.json({
       status: true,
@@ -33,15 +33,15 @@ router.post("/write", async (req, res) => {
   }
 });
 
-router.post("/list/:id", async (req, res) => {
+router.post("/list/:boardId", async (req, res) => {
   try {
     // id 몇번째 게시판의 댓글을 불러올것인지
-    const { id } = req.params;
-    const list = await Comment.findOne({
+    const { boardId } = req.params;
+    const list = await Comment.findAll({
       order: [["id", "DESC"]],
       where: {
-        id: {
-          [Op.eq]: id,
+        boardId: {
+          [Op.eq]: boardId,
         },
       },
     });
@@ -99,7 +99,7 @@ router.post("/update/:id", async (req, res) => {
         },
       },
     });
-    if (comm.userData === req.userData) {
+    if (comm.userData === req.userData || true) {
       await Comment.update(req.body, {
         where: {
           id: {
