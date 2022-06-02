@@ -1,3 +1,4 @@
+const { application } = require('express');
 const { Sequelize, DataTypes } = require('sequelize');
 const env = process.env.NODE_ENV || 'development';
 const config = require(__dirname + '/../config/config.json')[env];
@@ -14,7 +15,9 @@ const Comment = require('./Comment')(sequelize, DataTypes)
 Auth.hasMany(Board)
 Board.belongsTo(Auth)
 
-
+app.get('/', (req, res) => {
+    res.send('hello ')
+})
 
 const db = {};
 db.sequelize = sequelize;
