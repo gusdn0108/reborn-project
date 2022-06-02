@@ -17,4 +17,6 @@ export const BOARD_VIEW = `${board}/view/`;
 // ------------------------------comment---------------------------------
 export const COMMENT_WRITE = `${comment}/write`;
 export const COMMENT_VIEW = `${comment}/view/`;
+export const COMMENT_LIST = `${comment}/list/`;
 export const COMMENT_UPDATE = `${comment}/update/`;
+export const COMMENT_DELETE = `${comment}/delete/`;

@@ -3,12 +3,7 @@ import parser from "html-react-parser";
 import { StyledButton } from "./BoardWrite2";
 import styled from "styled-components";
 import { Link, useParams } from "react-router-dom";
-import {
-  COMMENT_DELETE,
-  COMMENT_LIST,
-  COMMENT_UPDATE,
-  COMMENT_WRITE,
-} from "../../common/path";
+import { BOARD_VIEW, COMMENT_VIEW, COMMENT_WRITE } from "../../common/path";
 import { MAIN_API } from "../../lib/axios";
 import "../../common/css/atag.css";
 
@@ -96,19 +91,15 @@ const comment_data = [
 
 const Comment = () => {
   const [text, setText] = useState("");
-  const [updateText, setUpdateText] = useState("");
   const [comment, setComment] = useState(comment_data);
 
   const [isLoadding, setIsLoadding] = useState(false);
   const { id } = useParams();
-  const fetchData = () => {
-    MAIN_API(setIsLoadding, COMMENT_LIST + id, (res) => {
-      setComment(res.data.result || []); //데이터 달라는 요청 댓글 추가후 다시 실행시켜야함
-    });
-  };
-  useEffect(() => {
-    fetchData(); //새로고침 안해도 바로 데이터가 넘어옴
-  }, []);
+  //   useEffect(() => {
+  //     MAIN_API(setIsLoadding, COMMENT_VIEW + id, (res) => {
+  //       setComment(res.data.result || []);
+  //     });
+  //   }, []);
   console.log("comment", comment);
 
   const submitHandler = (e) => {
@@ -119,33 +110,12 @@ const Comment = () => {
       COMMENT_WRITE,
       (res) => {
         console.log(res);
-        fetchData();
       },
-      { comment: text, nickname: "test", boardId: id }
+      { comment: text, nickname: "test" }
     );
   };
 
-  const deleteHandler = (commentId) => () => {
-    MAIN_API(setIsLoadding, COMMENT_DELETE + commentId, (res) => {
-      console.log(res);
-      fetchData(); //바로 호출해서 데이터가 바로 보임
-    });
-  };
-
-  const updateHandler = (commentId) => () => {
-    MAIN_API(
-      setIsLoadding,
-      COMMENT_UPDATE + commentId,
-      (res) => {
-        console.log(res);
-        fetchData(); //바로 호출해서 데이터가 바로 보임
-        setCommentId(); // 인풋이 없어짐
-      },
-      { comment: updateText }
-    );
-  };
-
-  const [commentId, setCommentId] = useState(); //첨에 아무것도 안들어있음
+  const [commentId, setCommentId] = useState();
 
   return (
     <CommentWrapper>
@@ -165,45 +135,26 @@ const Comment = () => {
         {comment.map((comment) => {
           return (
             <div className="comment-view">
-              <div className="comm-person">{comment.nickname}</div>
+              <div className="comm-person">{comment.title}</div>
 
-              {commentId === comment.id ? ( //없는
-                <input
-                  className="edit-input"
-                  value={updateText} //업데이트를 하면 보내줘야할 데이터
-                  onChange={(e) => setUpdateText(e.target.value)}
-                />
+              {commentId === comment.id ? (
+                <input className="edit-input" />
               ) : (
-                <div className="comm-content">{comment.comment}</div>
+                <div className="comm-content">{comment.content}</div>
               )}
-              <div className="comm-date">{comment.createdAt}</div>
+              <div className="comm-date">{comment.date}</div>
               <div className="comm-writebtn">
-                <StyledButton
-                  className="delete-btn"
-                  onClick={deleteHandler(comment.id)}
-                >
-                  x
-                </StyledButton>
+                <StyledButton className="delete-btn">x</StyledButton>
               </div>
               <div className="comm-delebtn">
-                {commentId === comment.id ? (
-                  <StyledButton
-                    className="edit-btn"
-                    onClick={updateHandler(comment.id)}
-                  >
-                    전송
-                  </StyledButton>
-                ) : (
-                  <StyledButton
-                    className="edit-btn"
-                    onClick={() => {
-                      setCommentId(comment.id);
-                      setUpdateText(comment.comment);
-                    }}
-                  >
-                    수정
-                  </StyledButton>
-                )}
+                <StyledButton
+                  className="edit-btn"
+                  onClick={() => {
+                    setCommentId(comment.id);
+                  }}
+                >
+                  수정
+                </StyledButton>
               </div>
             </div>
           );

@@ -1,22 +1,24 @@
 module.exports = (sequelize, DataTypes) => {
-    const Comment = sequelize.define('Comment', {
+  const Comment = sequelize.define(
+    "Comment",
+    {
+      comment: {
+        type: DataTypes.STRING,
+        allowNull: false,
+      },
+      boardId: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+      },
+    },
+    {
+      timestamps: true,
+      tableName: "Comment",
+      charset: "utf8mb4",
+      collate: "utf8mb4_general_ci",
+      freezeTableName: true,
+    }
+  );
 
-        comment: {
-            type: DataTypes.STRING,
-            allowNull: false,
-        },
-        nickname: {
-            type: DataTypes.STRING,
-            allowNull: false,
-        },
-
-    }, {
-        timestamps: true,
-        tableName: 'Comment',
-        charset: 'utf8mb4',
-        collate: 'utf8mb4_general_ci',
-        freezeTableName: true,
-    })
-
-    return Comment
-}
+  return Comment;
+};
