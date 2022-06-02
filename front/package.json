@@ -74,7 +74,5 @@
       "last 1 safari version"
     ]
   },
-  "devDependencies": {
-    "css-minimizer-webpack-plugin": "^4.0.0"
-  }
+  "devDependencies": {}
 }
