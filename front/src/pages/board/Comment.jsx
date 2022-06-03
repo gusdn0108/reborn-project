@@ -120,7 +120,7 @@ const Comment = () => {
   const [isLoadding, setIsLoadding] = useState(false);
 
   const fetchData = () => {
-    MAIN_API(setIsLoadding, COMMENT_LIST + id, (res) => {
+    MAIN_API(setIsLoadding, "http://3.39.197.229/api/board/comment/list/" + id, (res) => {
       setComment(res.data.result || []); //데이터 달라는 요청 댓글 추가후 다시 실행시켜야함
     });
   };
@@ -136,7 +136,7 @@ const Comment = () => {
     console.log(e);
     MAIN_API(
       setIsLoadding,
-      COMMENT_WRITE,
+      "http://3.39.197.229/api/board/comment/write",
       (res) => {
         console.log(res);
         fetchData();
@@ -148,7 +148,7 @@ const Comment = () => {
   };
 
   const deleteHandler = (commentId) => () => {
-    MAIN_API(setIsLoadding, COMMENT_DELETE + commentId, (res) => {
+    MAIN_API(setIsLoadding, "http://3.39.197.229/api/board/comment/delete/" + commentId, (res) => {
       console.log(res);
       fetchData(); //바로 호출해서 데이터가 바로 보임
     });
@@ -157,7 +157,7 @@ const Comment = () => {
   const updateHandler = (commentId) => () => {
     MAIN_API(
       setIsLoadding,
-      COMMENT_UPDATE + commentId,
+      "http://3.39.197.229/api/board/comment/update/" + commentId,
       (res) => {
         console.log(res);
         fetchData(); //바로 호출해서 데이터가 바로 보임
