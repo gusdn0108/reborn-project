@@ -13,7 +13,7 @@ function* LogIn(action) {
     console.log('saga login함수의 action값은? ', action)
     try {
         const result = yield call(LoginAPI, action.payload)
-        console.log(result.data)
+        console.log('result값',result)
 
         if (result.data.status === false) {
             yield put({
