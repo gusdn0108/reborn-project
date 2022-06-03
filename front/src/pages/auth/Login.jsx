@@ -58,13 +58,13 @@ const Login = () => {
 
     MAIN_API(
       setIsLoding,
-      AUTH_SIGNIN,
+      "http://3.39.197.229/api/auth/signin",
       (res) => {
         if (res.data.status) {
           Signin(data);
-        
-            localStorage.setItem(`token`, res.data.token);
-      
+
+          localStorage.setItem(`token`, res.data.token);
+
         }
       },
       data
@@ -90,14 +90,14 @@ const Login = () => {
   const dialogFooter = (
     <div className="flex justify-content-center">
       <Link to="/">
-      <Button  className="p-button-text" autoFocus >메인으로</Button>
+        <Button className="p-button-text" autoFocus >메인으로</Button>
       </Link>
     </div>
   );
   const faildialogFooter = (
     <div className="flex justify-content-center">
       <Link to="/login">
- 
+
       </Link>
     </div>
   );
@@ -106,13 +106,13 @@ const Login = () => {
   return (
     <div className="form-demo">
       <Dialog visible={showMessage} onHide={() => setShowMessage(false)} position="top" footer={dialogFooter} showHeader={false} breakpoints={{ '960px': '80vw' }} style={{ width: '30vw' }}>
-        <div id="loginalert"className="flex align-items-center flex-column pt-6 px-3">
+        <div id="loginalert" className="flex align-items-center flex-column pt-6 px-3">
           <i className="pi pi-check-circle" style={{ fontSize: '10rem', color: 'var(--green-500)' }}></i>
           <p style={{ lineHeight: 7, textIndent: '1rem', fontSize: 20 }}>
             환영합니다.
           </p>
         </div>
-        </Dialog>
+      </Dialog>
 
       <div className="flex justify-content-center">
         <div className="card">
@@ -163,9 +163,9 @@ const Login = () => {
                         />
                         <label
                           htmlFor="password"
-                         
+
                         >
-  
+
                         </label>
                       </span>
                       {getFormErrorMessage(meta)}
@@ -173,10 +173,10 @@ const Login = () => {
                   )}
                 />
 
-              <ul >
-               <Button type="submit" className="loginsubmit" >로그인</Button>
-              <Button className="hell" to="/signup" >회원가입</Button>
-              
+                <ul >
+                  <Button type="submit" className="loginsubmit" >로그인</Button>
+                  <Button className="hell" to="/signup" >회원가입</Button>
+
                 </ul>
               </form>
             )}
