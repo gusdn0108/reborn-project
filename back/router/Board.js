@@ -46,7 +46,7 @@ router.post("/write", async (req, res) => {
 
         res.json({
             status: true,
-            result: data, id,
+            result: data,
             msg: "?",
         });
     } catch (e) {
