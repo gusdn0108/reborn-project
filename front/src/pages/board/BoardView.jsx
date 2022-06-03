@@ -181,11 +181,14 @@ const BoardView = () => {
   const [posts, setPosts] = useState([]);
   const [isLoadding, setIsLoadding] = useState(false);
   const { id } = useParams();
+  console.log(id)
 
+  const viewpath = "http://3.39.197.229/api/board/view/"
   useEffect(() => {
-    MAIN_API(setIsLoadding, BOARD_VIEW + id, (res) => {
+    MAIN_API(setIsLoadding, "http://3.39.197.229/api/board/view/" + updateIdx, (res) => {
+
       setPosts(res.data.result);
-    });
+    }, id);
 
     return () => {
       setPosts([]);
@@ -195,7 +198,6 @@ const BoardView = () => {
 
   // console.log(window.location.pathname)
   const updateIdx = window.location.pathname.split('/')[3]
-  console.log(updateIdx)
   const updatePath = '/board/update/' + updateIdx
   const deletePath = '/board/list'
 
@@ -212,7 +214,7 @@ const BoardView = () => {
 
   const deleteHandler = (e) => {
     e.preventDefault()
-    MAIN_API(setIsLoadding, BOARD_DELETE + id, (res) => {
+    MAIN_API(setIsLoadding, "http://3.39.197.229/api/board/delete/" + id, (res) => {
       setShowMessage(true)
     })
 
@@ -224,7 +226,7 @@ const BoardView = () => {
 
         <Dialog visible={showMessage} onHide={() => setShowMessage(false)} position="top" footer={dialogFooter} showHeader={false} breakpoints={{ '960px': '80vw' }} style={{ width: '30vw' }}>
           <div id="loginalert" className="flex align-items-center flex-column pt-6 px-3">
-            <i className="pi pi-check-circle" style={{ fontSize: '10rem' }}></i>
+            <i className="pi pi-check-circle" style={{ fontSize: '10rem', color: 'var(--green-500)' }}></i>
             <p style={{ lineHeight: 7, textIndent: '1rem', fontSize: 20 }}>
               글삭제가 완료되었습니다
             </p>

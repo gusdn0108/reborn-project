@@ -168,12 +168,12 @@ const BoardUpdate = () => {
     </div>
   );
 
-
+  const backuUpdatePath = "http://3.39.197.229/api/board/update/"
 
   const submitHandler = (e) => {
     e.preventDefault();
     console.log(e);
-    MAIN_API(setIsLoadding, BOARD_UPDATE + id, (res) => {
+    MAIN_API(setIsLoadding, backuUpdatePath + id, (res) => {
     }, writeState)
   };
   return (
@@ -184,7 +184,7 @@ const BoardUpdate = () => {
 
         <Dialog visible={showMessage} onHide={() => setShowMessage(false)} position="top" footer={dialogFooter} showHeader={false} breakpoints={{ '960px': '80vw' }} style={{ width: '30vw' }}>
           <div id="loginalert" className="flex align-items-center flex-column pt-6 px-3">
-            <i className="pi pi-check-circle" style={{ fontSize: '10rem' }}></i>
+            <i className="pi pi-check-circle" style={{ fontSize: '10rem', color: 'var(--green-500)' }}></i>
             <p style={{ lineHeight: 7, textIndent: '1rem', fontSize: 20 }}>
               글수정이 완료되었습니다
             </p>

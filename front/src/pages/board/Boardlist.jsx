@@ -160,7 +160,7 @@ const BoardList = () => {
   const [posts, setPosts] = useState([]);
   const [isLoadding, setIsLoadding] = useState(false);
   useEffect(() => {
-    MAIN_API(setIsLoadding, BOARD_LIST, (res) => {
+    MAIN_API(setIsLoadding, "http://3.39.197.229/api/board/list", (res) => {
       setPosts(res.data.list);
     });
 

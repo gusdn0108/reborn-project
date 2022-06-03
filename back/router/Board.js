@@ -40,7 +40,7 @@ router.post("/write", async (req, res) => {
             subject: req.body.subject,
             content: req.body.content,
             username: req.body.username,
-            id: id,
+
             hit: 0,
         });
 

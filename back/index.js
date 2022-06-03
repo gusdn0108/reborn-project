@@ -2,7 +2,6 @@ import express from 'express'
 import cors from 'cors'
 import router from './router'
 import path from 'path'
-
 import {  sequelize } from './models'
 import AuthCheck from "./lib/AuthCheck"
 import dotenv from "dotenv";
@@ -25,6 +24,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.urlencoded({ limit: '500mb', extended: true }));
 app.use('/api', router)
 
+
+
 sequelize.sync({ force: false })
     .then(() => {
         console.log('Connect')
@@ -32,6 +33,8 @@ sequelize.sync({ force: false })
     .catch(() => {
         console.log(' Disconect ')
     })
+
+
 
 app.listen(port, () => {
     console.log(`Api server Open! Port :${port}`)
