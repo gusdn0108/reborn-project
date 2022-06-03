@@ -40,13 +40,12 @@ router.post("/write", async (req, res) => {
             subject: req.body.subject,
             content: req.body.content,
             username: req.body.username,
-
             hit: 0,
         });
 
         res.json({
             status: true,
-            result: data, id,
+            result: data,
             msg: "?",
         });
     } catch (e) {
