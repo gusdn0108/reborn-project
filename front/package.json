@@ -52,7 +52,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "react-app-rewired build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
@@ -75,6 +75,8 @@
     ]
   },
   "devDependencies": {
-    "css-minimizer-webpack-plugin": "^4.0.0"
+    "css-minimizer-webpack-plugin": "^4.0.0",
+    "customize-cra": "^1.0.0",
+    "react-app-rewired": "^2.2.1"
   }
 }
