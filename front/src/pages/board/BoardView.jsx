@@ -187,8 +187,10 @@ const BoardView = () => {
   useEffect(() => {
     MAIN_API(setIsLoadding, "http://3.39.197.229/api/board/view/" + updateIdx, (res) => {
 
+
       setPosts(res.data.result);
     }, id);
+
 
     return () => {
       setPosts([]);
@@ -214,7 +216,9 @@ const BoardView = () => {
 
   const deleteHandler = (e) => {
     e.preventDefault()
+
     MAIN_API(setIsLoadding, "http://3.39.197.229/api/board/delete/" + id, (res) => {
+
       setShowMessage(true)
     })
 
