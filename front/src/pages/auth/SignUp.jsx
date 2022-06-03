@@ -54,7 +54,7 @@ const SignUp = () => {
         form.restart();
         console.log(data)
 
-        MAIN_API(setIsLoding, "http://3.39.197.229", (res) => {
+        MAIN_API(setIsLoding, AUTH_SIGNUP, (res) => {
 
         }, data)
 
