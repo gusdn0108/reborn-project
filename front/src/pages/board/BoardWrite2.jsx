@@ -138,14 +138,18 @@ const BoardWrite2 = () => {
   });
   const [isLoadding, setIsLoadding] = useState(false);
 
+
   const updatePath = '/board/list'
+
 
 
   const [showMessage, setShowMessage] = useState(false);
   const dialogFooter = (
     <div className="flex justify-content-center">
       <Link to={updatePath}>
-        <Button className="p-button-text" autoFocus >글 확인하러가기</Button>
+
+      <Button  className="p-button-text" autoFocus >글 확인하러가기</Button>
+
       </Link>
     </div>
   );

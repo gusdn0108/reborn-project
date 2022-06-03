@@ -168,13 +168,15 @@ const BoardUpdate = () => {
     </div>
   );
 
-  const backuUpdatePath = "http://3.39.197.229/api/board/update/"
+ const backuUpdatePath = "http://3.39.197.229/api/board/update/"
+
 
   const submitHandler = (e) => {
     e.preventDefault();
     console.log(e);
     MAIN_API(setIsLoadding, backuUpdatePath + id, (res) => {
     }, writeState)
+
   };
   return (
 
