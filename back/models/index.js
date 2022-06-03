@@ -15,7 +15,6 @@ const Comment = require('./Comment')(sequelize, DataTypes)
 Auth.hasMany(Board)
 Board.belongsTo(Auth)
 
-
 const db = {};
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
