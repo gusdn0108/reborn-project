@@ -25,7 +25,7 @@ app.use(express.urlencoded({ limit: '500mb', extended: true }));
 app.use('/api', router)
 
 
-
+// 흐음
 sequelize.sync({ force: false })
     .then(() => {
         console.log('Connect')
