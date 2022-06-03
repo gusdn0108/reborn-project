@@ -91,7 +91,7 @@ const StyledInput = styled.input`
 `;
 
 const comment_data = [
-  
+
 ];
 
 const Comment = () => {
@@ -102,30 +102,30 @@ const Comment = () => {
   const [comment, setComment] = useState(comment_data);
   const [showMessage, setShowMessage] = useState(false);
 
-  const close = ()=>{
+  const close = () => {
     setShowMessage(false)
   }
-  const listpath = '/board/view/' + id 
+  const listpath = '/board/view/' + id
 
   const dialogFooter = (
     <div className="flex justify-content-center">
       <Link to={listpath}>
-      <Button  className="p-button-text" autoFocus onClick={close}>확인</Button>
+        <Button className="p-button-text" autoFocus onClick={close}>확인</Button>
       </Link>
     </div>
   );
 
 
 
-  const [isLoadding, setIsLoadding] = useState(false);  
- 
+  const [isLoadding, setIsLoadding] = useState(false);
+
   const fetchData = () => {
     MAIN_API(setIsLoadding, COMMENT_LIST + id, (res) => {
       setComment(res.data.result || []); //데이터 달라는 요청 댓글 추가후 다시 실행시켜야함
     });
   };
 
-  
+
   useEffect(() => {
     fetchData(); //새로고침 안해도 바로 데이터가 넘어옴
   }, []);
@@ -140,10 +140,10 @@ const Comment = () => {
       (res) => {
         console.log(res);
         fetchData();
-     
+
 
       },
-      { comment: text,  boardId: id }
+      { comment: text, boardId: id }
     );
   };
 
@@ -171,15 +171,15 @@ const Comment = () => {
 
   return (
     <CommentWrapper>
-      
+
       <Dialog visible={showMessage} onHide={() => setShowMessage(false)} position="top" footer={dialogFooter} showHeader={false} breakpoints={{ '960px': '80vw' }} style={{ width: '30vw' }}>
-        <div id="loginalert"className="flex align-items-center flex-column pt-6 px-3">
-          <i className="pi pi-check-circle" style={{ fontSize: '10rem', color: 'var(--green-500)' }}></i>
+        <div id="loginalert" className="flex align-items-center flex-column pt-6 px-3">
+          <i className="pi pi-check-circle" style={{ fontSize: '10rem' }}></i>
           <p style={{ lineHeight: 7, textIndent: '1rem', fontSize: 20 }}>
-           댓글이 작성되었습니다 
+            댓글이 작성되었습니다
           </p>
         </div>
-        </Dialog>
+      </Dialog>
 
       <div className="comment">
         <StyledInput
@@ -190,9 +190,9 @@ const Comment = () => {
           }}
         ></StyledInput>
         <form onSubmit={submitHandler}>
-        <StyledButton className="commbtn"  onClick={setShowMessage}>
-          댓글달기
-        </StyledButton>
+          <StyledButton className="commbtn" onClick={setShowMessage}>
+            댓글달기
+          </StyledButton>
         </form>
       </div>
       <div className="commentviewrapper">

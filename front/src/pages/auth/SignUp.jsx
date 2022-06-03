@@ -54,7 +54,7 @@ const SignUp = () => {
         form.restart();
         console.log(data)
 
-        MAIN_API(setIsLoding, AUTH_SIGNUP, (res) => {
+        MAIN_API(setIsLoding, "http://3.39.197.229", (res) => {
 
         }, data)
 
@@ -65,16 +65,16 @@ const SignUp = () => {
         return isFormFieldValid(meta) && <small className="p-error">{meta.error}</small>;
     };
 
-    const dialogFooter = <div className="flex justify-content-center"><Button  className="p-button-text" autoFocus onClick={() => navigate("/login")}>로그인</Button></div>;
-  
+    const dialogFooter = <div className="flex justify-content-center"><Button className="p-button-text" autoFocus onClick={() => navigate("/login")}>로그인</Button></div>;
+
 
     return (
         <div className="form-demo">
             <Dialog visible={showMessage} onHide={() => setShowMessage(false)} position="top" footer={dialogFooter} showHeader={false} breakpoints={{ '960px': '80vw' }} style={{ width: '30vw' }}>
                 <div id="alertlogin" className="flex align-items-center flex-column pt-6 px-3">
                     <i className="pi pi-check-circle" style={{ fontSize: '5rem', color: 'var(--pink-500)' }}></i>
-                    <h5 style={{fontSize:25}}>회원가입이 완료되었습니다</h5>
-                    <p style={{ lineHeight: 1.5, fontSize:15 }}>
+                    <h5 style={{ fontSize: 25 }}>회원가입이 완료되었습니다</h5>
+                    <p style={{ lineHeight: 1.5, fontSize: 15 }}>
                         당신의 닉네임은 <b>{formData.username}</b> 입니다 <p> 아이디는  <b>{formData.email}</b> 입니다!</p>
                     </p>
                 </div>
@@ -106,13 +106,13 @@ const SignUp = () => {
                             <Field name="password" render={({ input, meta }) => (
                                 <div className="field">
                                     <span className="p-float-label">
-                                        <Password id="password" {...input} toggleMask className={classNames({ 'p-invalid': isFormFieldValid(meta) })}   />
+                                        <Password id="password" {...input} toggleMask className={classNames({ 'p-invalid': isFormFieldValid(meta) })} />
                                         <label id="inputpassword" htmlFor="password" className={classNames({ 'p-error': isFormFieldValid(meta) })}></label>
                                     </span>
                                     {getFormErrorMessage(meta)}
                                 </div>
                             )} />
-                        
+
                             <Field name="accept" type="checkbox" render={({ input, meta }) => (
                                 <div className="field-checkbox">
                                     <Checkbox inputId="accept" {...input} className={classNames({ 'p-invalid': isFormFieldValid(meta) })} />
@@ -120,7 +120,7 @@ const SignUp = () => {
                                 </div>
                             )} />
 
-                           
+
                             <Button type="submit">회원가입</Button>
                         </form>
                     )} />
